@@ -1,0 +1,149 @@
+/* Card.css */
+.card {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    padding: 10px;
+    margin: 20px auto;
+}
+
+/* Hover state - full card turns red like selected */
+.card.hovered {
+    background-color: #ff4d4d;
+    box-shadow: 0 8px 20px rgba(255, 77, 77, 0.25);
+    transform: translateY(-6px);
+}
+
+.card.hovered .car-image-container {
+    border-bottom: 2px solid #ff4d4d;
+}
+
+.card.hovered .car-name {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.card.hovered .rent-button {
+    background-color: #ffffff;
+    color: red;
+    border: none;
+}
+
+.card.hovered .rent-button:hover {
+    background-color: white;
+    padding: 10px 35px;
+}
+
+/* Selected state - same as hover but persistent */
+
+
+/* Image container */
+.car-image-container {
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.car-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover .car-image {
+    transform: scale(1.08);
+}
+
+/* Content styling */
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.car-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.price-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.price-label {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+.price-amount {
+    font-size: 22px;
+    font-weight: 800;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+/* Rent button */
+.rent-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 24px;
+    padding: 10px 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.rent-button:hover {
+    background-color: #e64545;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Animation for selection state */
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .car-image-container {
+        height: 150px;
+    }
+
+    .car-name {
+        font-size: 16px;
+    }
+
+    .price-amount {
+        font-size: 18px;
+    }
+}
