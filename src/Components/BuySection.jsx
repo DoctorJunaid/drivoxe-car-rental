@@ -5,7 +5,7 @@ import Card from './Card/Card.jsx';
 const BuySection = () => {
     const [selectedCarId, setSelectedCarId] = useState(null);
     const [currentPage , setcurrentPage ] = useState(1);
-    const [cardsPerPage , setcardsPerPAge ] = useState(6);
+    const [cardsPerPage , setcardsPerPage ] = useState(6);
 
 
     const cars = [
@@ -13,184 +13,81 @@ const BuySection = () => {
                 "id": 1,
                 "name": "Horizon Mirage Convertible",
                 "price": 49,
-                "image": "https://via.placeholder.com/300x200?text=Horizon+Mirage"
+                "image": "src/assets/car-images/image1.webp"
             },
             {
                 "id": 2,
                 "name": "Zephyr A4 Stratos",
                 "price": 79,
-                "image": "https://via.placeholder.com/300x200?text=Zephyr+A4+Stratos"
+                "image": "src/assets/car-images/image2.webp"
             },
             {
                 "id": 3,
                 "name": "Aurora X5 Nebula",
                 "price": 99,
-                "image": "https://via.placeholder.com/300x200?text=Aurora+X5+Nebula"
+                "image": "src/assets/car-images/image3.webp"
             },
             {
                 "id": 4,
                 "name": "Vanguard CX2 Convertible",
                 "price": 59,
-                "image": "https://via.placeholder.com/300x200?text=Vanguard+CX2"
+                "image": "src/assets/car-images/image4.webp"
             },
             {
                 "id": 5,
                 "name": "Stellar Orion Hybrid",
                 "price": 39,
-                "image": "https://via.placeholder.com/300x200?text=Stellar+Orion"
+                "image": "src/assets/car-images/image5.webp"
             },
             {
                 "id": 6,
                 "name": "Vanguard C-Class Coupe",
                 "price": 69,
-                "image": "https://via.placeholder.com/300x200?text=Vanguard+C-Class"
+                "image": "src/assets/car-images/image6.webp"
             },
             {
                 "id": 7,
-                "name": "Vanguard X-Class Coupe",
-                "price": 89,
-                "image": "https://via.placeholder.com/300x200?text=Vanguard+X-Class"
+                "name": "Equinox F-Eclipse",
+                "price": 109,
+                "image": "src/assets/car-images/image7.webp"
             },
             {
                 "id": 8,
-                "name": "Apex GT Sport",
-                "price": 85,
-                "image": "https://via.placeholder.com/300x200?text=Apex+GT+Sport"
+                "name": "Radiant Solstice Automobiles",
+                "price": 89,
+                "image": "src/assets/car-images/image8.webp"
             },
             {
                 "id": 9,
-                "name": "Nova EV Cruiser",
-                "price": 45,
-                "image": "https://via.placeholder.com/300x200?text=Nova+EV+Cruiser"
+                "name": "Zenith Tempest",
+                "price": 129,
+                "image": "src/assets/car-images/image9.webp"
             },
             {
                 "id": 10,
-                "name": "Titan XR SUV",
-                "price": 110,
-                "image": "https://via.placeholder.com/300x200?text=Titan+XR+SUV"
+                "name": "Horizon Mirage Convertible",
+                "price": 59,
+                "image": "src/assets/car-images/image10.webp"
             },
             {
                 "id": 11,
-                "name": "Phantom Shadow Coupe",
-                "price": 129,
-                "image": "https://via.placeholder.com/300x200?text=Phantom+Shadow"
+                "name": "Vanguard Phoenix C-Class",
+                "price": 49,
+                "image": "src/assets/car-images/image11.webp"
             },
             {
                 "id": 12,
-                "name": "Sentinel Voyager",
-                "price": 75,
-                "image": "https://via.placeholder.com/300x200?text=Sentinel+Voyager"
+                "name": "Apex Autos Typhoon Model 3",
+                "price": 79,
+                "image": "src/assets/car-images/image12.webp"
             },
             {
                 "id": 13,
-                "name": "Vortex R-Line Sedan",
-                "price": 62,
-                "image": "https://via.placeholder.com/300x200?text=Vortex+R-Line"
-            },
-            {
-                "id": 14,
-                "name": "Quantum Bolt EV",
-                "price": 55,
-                "image": "https://via.placeholder.com/300x200?text=Quantum+Bolt+EV"
-            },
-            {
-                "id": 15,
-                "name": "Velocity Stratus",
-                "price": 95,
-                "image": "https://via.placeholder.com/300x200?text=Velocity+Stratus"
-            },
-            {
-                "id": 16,
-                "name": "Zenith Apex Hybrid",
-                "price": 48,
-                "image": "https://via.placeholder.com/300x200?text=Zenith+Apex"
-            },
-            {
-                "id": 17,
-                "name": "Echo Drive Sedan",
-                "price": 35,
-                "image": "https://via.placeholder.com/300x200?text=Echo+Drive+Sedan"
-            },
-            {
-                "id": 18,
-                "name": "Pulse GT Roadster",
-                "price": 105,
-                "image": "https://via.placeholder.com/300x200?text=Pulse+GT+Roadster"
-            },
-            {
-                "id": 19,
-                "name": "Striker Fury Sport",
-                "price": 92,
-                "image": "https://via.placeholder.com/300x200?text=Striker+Fury"
-            },
-            {
-                "id": 20,
-                "name": "Raider Nomad SUV",
-                "price": 88,
-                "image": "https://via.placeholder.com/300x200?text=Raider+Nomad+SUV"
-            },
-            {
-                "id": 21,
-                "name": "Comet Celestial",
-                "price": 77,
-                "image": "https://via.placeholder.com/300x200?text=Comet+Celestial"
-            },
-            {
-                "id": 22,
-                "name": "Pulsar ZL1 Coupe",
-                "price": 135,
-                "image": "https://via.placeholder.com/300x200?text=Pulsar+ZL1"
-            },
-            {
-                "id": 23,
-                "name": "Orion Skybrid Hybrid",
-                "price": 52,
-                "image": "https://via.placeholder.com/300x200?text=Orion+Skybrid"
-            },
-            {
-                "id": 24,
-                "name": "Nebula X Electric",
-                "price": 68,
-                "image": "https://via.placeholder.com/300x200?text=Nebula+X+Electric"
-            },
-            {
-                "id": 25,
-                "name": "Galaxy Runner",
+                "name": "Radiant Solstice Convertible",
                 "price": 59,
-                "image": "https://via.placeholder.com/300x200?text=Galaxy+Runner"
+                "image": "src/assets/car-images/image13.webp"
             },
-            {
-                "id": 26,
-                "name": "Cosmos Interstellar",
-                "price": 149,
-                "image": "https://via.placeholder.com/300x200?text=Cosmos+Interstellar"
-            },
-            {
-                "id": 27,
-                "name": "Terra Rover SUV",
-                "price": 99,
-                "image": "https://via.placeholder.com/300x200?text=Terra+Rover+SUV"
-            },
-            {
-                "id": 28,
-                "name": "Aqua Marine Convertible",
-                "price": 79,
-                "image": "https://via.placeholder.com/300x200?text=Aqua+Marine"
-            },
-            {
-                "id": 29,
-                "name": "Ignis Blaze Hatchback",
-                "price": 42,
-                "image": "https://via.placeholder.com/300x200?text=Ignis+Blaze"
-            },
-            {
-                "id": 30,
-                "name": "Solstice Flare Coupe",
-                "price": 89,
-                "image": "https://via.placeholder.com/300x200?text=Solstice+Flare"
-            },
-
-    ];
+        ];
 
     const handleRentClick = (id) => {
         console.log(`Renting car: ${id}`);
