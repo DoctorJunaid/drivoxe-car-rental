@@ -116,7 +116,7 @@ const BuySection = () => {
     }
     return (
         <div>
-            <h2 className={"text-2xl text-gray-800 mt-8 font-bold text-center "} >THE CARS</h2>
+            <h2 className={"text-2xl text-gray-800 mt-30 font-bold text-center "} >THE CARS</h2>
             <h1 className={"text-5xl m-10   font-semibold text-center"}>Our Impressive Fleet</h1>
         <div style={{
             display: 'grid',

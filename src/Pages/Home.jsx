@@ -4,6 +4,7 @@ import Hero from "@/Components/Hero.jsx";
 import Carousal from "@/Components/Carousal.jsx";
 import BuySection from "@/Components/BuySection.jsx";
 import AnimatedTestimonialsData from "@/Components/AnimatedTestimonialsData.jsx";
+import Footer from "@/Components/Footer.jsx";
 
 // A simple utility to get the base image URL
 
@@ -17,9 +18,7 @@ const Home = () => {
             <Carousal />
             <BuySection />
             <AnimatedTestimonialsData />
-
-
-
+            <Footer />
 
         </div>
     );

@@ -26,7 +26,7 @@ const Carousel = () => {
 
     return (
         <div
-            className="w-full p-8  inline-flex flex-nowrap overflow-hidden
+            className="w-full p-20  inline-flex flex-nowrap overflow-hidden
                        [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
             {/* The custom CSS class is used here */}
             <ul
@@ -35,7 +35,7 @@ const Carousel = () => {
             >
                 {extendedLogos.map((logo, index) => (
                     <li key={index}>
-                        <img src={logo.src} alt={logo.alt} className="h-10 w-auto" />
+                        <img src={logo.src} alt={logo.alt} className="h-15 w-auto" />
                     </li>
                 ))}
             </ul>

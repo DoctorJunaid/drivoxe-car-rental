@@ -36,5 +36,5 @@ const testimonials = [
 ];
 
 export default function AnimatedTestimonialsData() {
-    return <AnimatedTestimonials testimonials={testimonials} />;
+    return <AnimatedTestimonials className={"mt-30"} testimonials={testimonials} />;
 }
