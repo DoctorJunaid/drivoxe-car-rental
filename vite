@@ -1,0 +1,114 @@
+
+
+  ROLLDOWN-VITE v7.1.14  ready in 1919 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+6:46:32 PM [vite] (client) Pre-transform error: Failed to resolve import "@repo/shadcn-ui/lib/utils" from "src/components/ui/shadcn-io/animated-testimonials/index.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /media/junaid/5818336318333F76/React/drivoxe-car-rental/src/components/ui/shadcn-io/animated-testimonials/index.tsx:6:19
+  3  |  import { motion, AnimatePresence } from "framer-motion";
+  4  |  import { useEffect, useState } from "react";                                                                                                          
+  5  |  import { cn } from "@repo/shadcn-ui/lib/utils";                                                                                                       
+     |                      ^                                                                                                                                 
+  6  |  var _jsxFileName = "/media/junaid/5818336318333F76/React/drivoxe-car-rental/src/components/ui/shadcn-io/animated-test...                              
+  7  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";                                                                                            
+6:46:32 PM [vite] (client) Pre-transform error: Failed to resolve import "@repo/shadcn-ui/lib/utils" from "src/components/ui/shadcn-io/animated-testimonials/index.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /media/junaid/5818336318333F76/React/drivoxe-car-rental/src/components/ui/shadcn-io/animated-testimonials/index.tsx:6:19
+  3  |  import { motion, AnimatePresence } from "framer-motion";
+  4  |  import { useEffect, useState } from "react";
+  5  |  import { cn } from "@repo/shadcn-ui/lib/utils";
+     |                      ^
+  6  |  var _jsxFileName = "/media/junaid/5818336318333F76/React/drivoxe-car-rental/src/components/ui/shadcn-io/animated-test...
+  7  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime"; (x2)                                                                                       
+6:46:32 PM [vite] (client) Pre-transform error: Failed to resolve import "@repo/shadcn-ui/lib/utils" from "src/components/ui/shadcn-io/animated-testimonials/index.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /media/junaid/5818336318333F76/React/drivoxe-car-rental/src/components/ui/shadcn-io/animated-testimonials/index.tsx:6:19
+  3  |  import { motion, AnimatePresence } from "framer-motion";
+  4  |  import { useEffect, useState } from "react";
+  5  |  import { cn } from "@repo/shadcn-ui/lib/utils";
+     |                      ^
+  6  |  var _jsxFileName = "/media/junaid/5818336318333F76/React/drivoxe-car-rental/src/components/ui/shadcn-io/animated-test...
+  7  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime"; (x3)                                                                                       
+6:46:32 PM [vite] Internal server error: Failed to resolve import "@repo/shadcn-ui/lib/utils" from "src/components/ui/shadcn-io/animated-testimonials/index.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /media/junaid/5818336318333F76/React/drivoxe-car-rental/src/components/ui/shadcn-io/animated-testimonials/index.tsx:6:19
+  3  |  import { motion, AnimatePresence } from "framer-motion";
+  4  |  import { useEffect, useState } from "react";
+  5  |  import { cn } from "@repo/shadcn-ui/lib/utils";
+     |                      ^
+  6  |  var _jsxFileName = "/media/junaid/5818336318333F76/React/drivoxe-car-rental/src/components/ui/shadcn-io/animated-test...
+  7  |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";                                                                                            
+      at TransformPluginContext._formatLog (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:30456:43)
+      at TransformPluginContext.error (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:30453:14)
+      at normalizeUrl (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:28865:18)
+      at async file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:28923:32
+      at async Promise.all (index 3)
+      at async TransformPluginContext.transform (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:28891:4)
+      at async EnvironmentPluginContainer.transform (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:30246:14)
+      at async loadAndTransform (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:25261:26)
+6:49:00 PM [vite] (client) hmr update /src/index.css, /src/Components/AnimatedTestimonialsData.jsx
+6:49:01 PM [vite] (client) Pre-transform error: Failed to resolve import "clsx" from "src/lib/utils.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /media/junaid/5818336318333F76/React/drivoxe-car-rental/src/lib/utils.ts:1:38
+  1  |  import { clsx } from "clsx";
+     |                        ^
+  2  |  import { twMerge } from "tailwindcss-merge";
+  3  |  export function cn(...inputs) {
+6:49:01 PM [vite] (client) Pre-transform error: Failed to resolve import "clsx" from "src/lib/utils.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /media/junaid/5818336318333F76/React/drivoxe-car-rental/src/lib/utils.ts:1:38
+  1  |  import { clsx } from "clsx";
+     |                        ^
+  2  |  import { twMerge } from "tailwindcss-merge";
+  3  |  export function cn(...inputs) { (x2)
+6:49:02 PM [vite] Internal server error: Failed to resolve import "clsx" from "src/lib/utils.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /media/junaid/5818336318333F76/React/drivoxe-car-rental/src/lib/utils.ts:1:38
+  1  |  import { clsx } from "clsx";
+     |                        ^
+  2  |  import { twMerge } from "tailwindcss-merge";
+  3  |  export function cn(...inputs) {
+      at TransformPluginContext._formatLog (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:30456:43)
+      at TransformPluginContext.error (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:30453:14)
+      at normalizeUrl (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:28865:18)
+      at async file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:28923:32
+      at async Promise.all (index 0)
+      at async TransformPluginContext.transform (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:28891:4)
+      at async EnvironmentPluginContainer.transform (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:30246:14)
+      at async loadAndTransform (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:25261:26)
+      at async viteTransformMiddleware (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:26359:20)
+6:49:19 PM [vite] Internal server error: Failed to resolve import "clsx" from "src/lib/utils.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /media/junaid/5818336318333F76/React/drivoxe-car-rental/src/lib/utils.ts:1:38
+  1  |  import { clsx } from "clsx";
+     |                        ^
+  2  |  import { twMerge } from "tailwindcss-merge";
+  3  |  export function cn(...inputs) {
+      at TransformPluginContext._formatLog (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:30456:43)
+      at TransformPluginContext.error (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:30453:14)
+      at normalizeUrl (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:28865:18)
+      at async file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:28923:32
+      at async Promise.all (index 0)
+      at async TransformPluginContext.transform (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:28891:4)
+      at async EnvironmentPluginContainer.transform (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:30246:14)
+      at async loadAndTransform (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:25261:26)
+      at async viteTransformMiddleware (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:26359:20) (x2)
+6:50:18 PM [vite] Internal server error: Failed to resolve import "clsx" from "src/lib/utils.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /media/junaid/5818336318333F76/React/drivoxe-car-rental/src/lib/utils.ts:1:38
+  1  |  import { clsx } from "clsx";
+     |                        ^
+  2  |  import { twMerge } from "tailwindcss-merge";
+  3  |  export function cn(...inputs) {
+      at TransformPluginContext._formatLog (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:30456:43)
+      at TransformPluginContext.error (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:30453:14)
+      at normalizeUrl (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:28865:18)
+      at async file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:28923:32
+      at async Promise.all (index 0)
+      at async TransformPluginContext.transform (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:28891:4)
+      at async EnvironmentPluginContainer.transform (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:30246:14)
+      at async loadAndTransform (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:25261:26)
+      at async viteTransformMiddleware (file:///media/junaid/5818336318333F76/React/drivoxe-car-rental/node_modules/vite/dist/node/chunks/dep-ySrR9pW8.js:26359:20) (x3)
