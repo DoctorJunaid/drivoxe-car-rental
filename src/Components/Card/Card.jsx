@@ -13,7 +13,7 @@ const Card = ({ car, isSelected = false, onRentClick }) => {
             onClick={() => onRentClick(car.id)} // Optional: make whole card clickable
         >
             <div className="car-image-container">
-                <img src={car.image} alt={car.name} className="car-image" />
+                <img loading={"lazy"} src={car.image} alt={car.name} className="car-image" />
             </div>
             <div className="card-content">
                 <h3 className="car-name">{car.name}</h3>
