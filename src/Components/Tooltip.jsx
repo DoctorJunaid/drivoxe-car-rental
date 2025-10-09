@@ -2,6 +2,10 @@
 
 import React from "react";
 import { AnimatedTooltip } from "@/components/ui/shadcn-io/animated-tooltip";
+import usamaImg from "@/assets/people/usamaPic.webp";
+import faizanImg from "@/assets/people/faizan.webp";
+import abdulImg from "@/assets/people/abdul.webp";
+import haseebImg from "@/assets/people/haseeb.webp";
 
 const people = [
     {
@@ -9,28 +13,28 @@ const people = [
         name: "Muhammad Faizan",
         designation: "Software Engineer",
         image:
-            "src/assets/people/faizan.webp",
+            faizanImg,
     },
     {
         id: 2,
         name: "Muhammad Osama",
         designation: "Certified Kubernetes Application Developer | Staff Software Engineer",
         image:
-            "src/assets/people/usamaPic.webp"
+            usamaImg
     },
     {
         id: 3,
         name: "Muhammad Haseeb",
         designation: "Unemployed",
         image:
-            "src/assets/people/haseeb.webp",
+            haseebImg,
     },
     {
         id: 4,
         name: "Abdul Musavir",
         designation: "Video Editor",
         image:
-            "src/assets/people/abdul.webp",
+            abdulImg,
     }
 
 ];
