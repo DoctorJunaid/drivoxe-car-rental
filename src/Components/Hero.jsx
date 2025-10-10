@@ -30,7 +30,7 @@ const Hero = () => {
                 />
 
                 {/* 2. Content Layer (sits on top of the background) */}
-                {/* --- THIS IS THE LINE TO CHANGE --- */}
+
                 <div className={`relative z-10 flex min-h-screen w-full flex-col items-center justify-center gap-12 p-6 pt-10 md:flex-row md:justify-between md:px-20 ${isMobile ? 'bg-black/30' : ''}`}>
 
                     {/* --- LEFT SECTION --- */}

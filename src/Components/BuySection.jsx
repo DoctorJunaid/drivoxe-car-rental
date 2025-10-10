@@ -1,110 +1,25 @@
 // ParentComponent.jsx
 import React, { useState } from 'react';
 import Card from './Card/Card.jsx';
-import  car1 from '../assets/car-images/image1.webp';
-import  car2 from '../assets/car-images/image2.webp';
-import  car3 from '../assets/car-images/image3.webp';
-import  car4 from '../assets/car-images/image4.webp';
-import  car5 from '../assets/car-images/image5.webp';
-import  car6 from '../assets/car-images/image6.webp';
-import  car7 from '../assets/car-images/image7.webp';
-import  car8 from '../assets/car-images/image8.webp';
-import  car9 from '../assets/car-images/image9.webp';
-import  car10 from '../assets/car-images/image10.webp';
-import  car11 from '../assets/car-images/image11.webp';
-import  car12 from '../assets/car-images/image12.webp';
-import  car13 from '../assets/car-images/image13.webp';
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router";
+import {setSelectedCarId} from "@/Redux/carSlice.js";
+
 
 const BuySection = () => {
-    const [selectedCarId, setSelectedCarId] = useState(null);
+
+
     const [currentPage , setcurrentPage ] = useState(1);
-    const [cardsPerPage , setcardsPerPage ] = useState(6);
+    const [cardsPerPage , setcardsPerPage ] = useState(6)
+    const Navigate = useNavigate();
+    const dispatch = useDispatch();
 
 
-    const cars = [
-            {
-                "id": 1,
-                "name": "Horizon Mirage Convertible",
-                "price": 49,
-                "image": car1
-            },
-            {
-                "id": 2,
-                "name": "Zephyr A4 Stratos",
-                "price": 79,
-                "image": car2
-            },
-            {
-                "id": 3,
-                "name": "Aurora X5 Nebula",
-                "price": 99,
-                "image": car3
-            },
-            {
-                "id": 4,
-                "name": "Vanguard CX2 Convertible",
-                "price": 59,
-                "image": car4
-            },
-            {
-                "id": 5,
-                "name": "Stellar Orion Hybrid",
-                "price": 39,
-                "image": car5
-            },
-            {
-                "id": 6,
-                "name": "Vanguard C-Class Coupe",
-                "price": 69,
-                "image": car6
-            },
-            {
-                "id": 7,
-                "name": "Equinox F-Eclipse",
-                "price": 109,
-                "image": car7
-            },
-            {
-                "id": 8,
-                "name": "Radiant Solstice Automobiles",
-                "price": 89,
-                "image": car8
-            },
-            {
-                "id": 9,
-                "name": "Zenith Tempest",
-                "price": 129,
-                "image": car9
-            },
-            {
-                "id": 10,
-                "name": "Horizon Mirage Convertible",
-                "price": 59,
-                "image": car10
-            },
-            {
-                "id": 11,
-                "name": "Vanguard Phoenix C-Class",
-                "price": 49,
-                "image": car11
-            },
-            {
-                "id": 12,
-                "name": "Apex Autos Typhoon Model 3",
-                "price": 79,
-                "image": car12
-            },
-            {
-                "id": 13,
-                "name": "Radiant Solstice Convertible",
-                "price": 59,
-                "image": car13
-            },
-        ];
+        const cars = useSelector((state)=> state.car.cars);
 
     const handleRentClick = (id) => {
-        console.log(`Renting car: ${id}`);
-        setSelectedCarId(id);
+       dispatch(setSelectedCarId(id));
+        Navigate(`/car/${id}`)
     };
     // pagination
     const lastCardIndex = currentPage * cardsPerPage;
@@ -130,7 +45,6 @@ const BuySection = () => {
                 <Card
                     key={car.id}
                     car={car}
-                    isSelected={selectedCarId === car.id}
                     onRentClick={handleRentClick}
                 />
             ))}

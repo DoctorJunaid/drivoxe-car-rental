@@ -5,6 +5,9 @@ import Carousal from "@/Components/Carousal.jsx";
 import BuySection from "@/Components/BuySection.jsx";
 import AnimatedTestimonialsData from "@/Components/AnimatedTestimonialsData.jsx";
 import Footer from "@/Components/Footer.jsx";
+import Cart from "@/Components/Cart.jsx";
+import ShoppingCartButton from "@/Components/Cart.jsx";
+
 
 // A simple utility to get the base image URL
 
@@ -19,7 +22,7 @@ const Home = () => {
             <BuySection />
             <AnimatedTestimonialsData />
             <Footer />
-
+            <ShoppingCartButton />
         </div>
     );
 };
