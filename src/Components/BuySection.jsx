@@ -11,7 +11,7 @@ const BuySection = () => {
 
     const [currentPage , setcurrentPage ] = useState(1);
     const [cardsPerPage , setcardsPerPage ] = useState(6)
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
 
@@ -19,7 +19,7 @@ const BuySection = () => {
 
     const handleRentClick = (id) => {
        dispatch(setSelectedCarId(id));
-        Navigate(`/car/${id}`)
+        navigate(`/cars/${id}`)
     };
     // pagination
     const lastCardIndex = currentPage * cardsPerPage;

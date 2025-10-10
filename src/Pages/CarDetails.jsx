@@ -1,89 +1,188 @@
 import React, { useState } from 'react';
-import { Heart, Share2, Star } from 'lucide-react';
-import {useSelector} from "react-redux";
-import {useParams} from "react-router";
+import { Star, Calendar, CreditCard, MapPin, Users, Fuel, Gauge } from 'lucide-react';
+import { useSelector } from "react-redux";
+import { useParams } from "react-router";
 import Navbar from "@/Components/Navbar.jsx";
 import Footer from "@/Components/Footer.jsx";
+import {Link} from "react-router-dom";
 
 const CarDetails = () => {
-    const {id} = useParams();
-    const cars = useSelector((state)=> state.car.cars);
+    const { id } = useParams();
+    const cars = useSelector((state) => state.car.cars);
 
-   const car = cars.find(e=> e.id === parseInt(id));
+    const car = cars.find(e => e.id === parseInt(id));
     if (!car) {
         return <h2 className="text-center text-red-500 mt-10">Car not found!</h2>;
     }
 
+    // State for button animations
+    const [rentHovered, setRentHovered] = useState(false);
+    const [buyHovered, setBuyHovered] = useState(false);
+
+
+    const formatPrice = (price) => {
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    };
+
     return (
         <div className="min-h-screen bg-white">
-          <Navbar />
-            {/* Breadcrumb */}
-            <div className="px-8 py-4 text-sm text-slate-600 bg-slate-50">
-                HOME / CAR DETAILS / {car.name}
+            <Navbar />
+
+            <div className="px-4 sm:px-8 py-4 text-sm text-slate-600 bg-slate-50 border-b border-slate-200">
+                <div className="max-w-7xl mx-auto"><Link to={"/"}>HOME</Link> / CAR DETAILS / {car.name.toUpperCase()}</div>
             </div>
-            {/* Main Content */}
-            <div className="px-8 py-8">
+
+
+            <div className="px-4 sm:px-8 py-8 max-w-7xl mx-auto">
                 <h2 className="text-3xl font-bold text-slate-900 mb-8">Car Details</h2>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                     {/* Left Side - Images */}
-                    <div>
+                    <div className="space-y-6">
                         {/* Main Image */}
-                        <div className="bg-gradient-to-br from-slate-100 to-white rounded-2xl p-8 mb-4 shadow-lg">
+                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200">
                             <img
                                 src={car.image}
                                 alt={car.name}
-                                className="w-full h-80 object-contain"
+                                className="w-full h-64 sm:h-80 object-contain transition-transform duration-500 hover:scale-150"
                             />
                         </div>
+                    </div>
 
                     {/* Right Side - Details */}
-                    <div>
+                    <div className="space-y-6">
                         {/* Title and Price */}
-                        <div className="flex items-start justify-between mb-4">
+                        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                             <div>
                                 <h3 className="text-3xl font-bold text-slate-900 mb-2">{car.name}</h3>
-                                <div className="flex items-center gap-2 text-sm text-slate-600">
-                                    <div className="flex items-center gap-1">
+                                <div className="flex  gap-2 mb-4 items-center">
+                                    <div className="flex items-center gap-1 justify-center">
                                         <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                                        <span className="font-semibold text-slate-900">{car.rating}</span>
+                                        <span className="font-semibold text-slate-900 ">{car.rating}</span>
+                                        <span className="text-slate-500">({car.reviews} reviews)</span>
                                     </div>
                                 </div>
                             </div>
                             <div className="text-right">
-                                <p className="text-3xl font-bold text-slate-900">${car.price}</p>
+                                <p className="text-3xl font-bold text-slate-900">${formatPrice(car.price)}</p>
                                 <p className="text-sm text-slate-600">/day</p>
                             </div>
                         </div>
 
                         {/* Description */}
-                        <p className="text-slate-600 mb-6 leading-relaxed">
+                        <p className="text-slate-700 leading-relaxed">
                             {car.description}
                         </p>
 
+                        {/* Action Buttons - Positioned to the right like in reference */}
+                        <div className="flex flex-col sm:flex-row sm:justify-start gap-4 pt-4">
+                            <button
+                                className={`flex items-center justify-center gap-2 py-3 px-6 rounded-full font-bold text-white shadow-md transition-all duration-300 transform ${
+                                    rentHovered ? 'scale-[1.02]  -translate-y-2 cursor-pointer' : 'scale-100'
+                                } bg-red-500 hover:bg-red-600`}
+                                onMouseEnter={() => setRentHovered(true)}
+                                onMouseLeave={() => setRentHovered(false)}
+                            >
+                                <Calendar className="w-4 h-4" />
+                                Rent Now
+                            </button>
 
-                        {/* Specifications */}
-                        <div className="mb-8">
-                            <h4 className="font-bold text-slate-900 mb-4 text-lg">SPECIFICATIONS</h4>
-                            <div className="grid grid-cols-2 gap-4">
+                            <button
+                                className={`flex items-center justify-center gap-2 py-3 px-6 rounded-full font-bold text-white shadow-md transition-all duration-300 transform ${
+                                    buyHovered ? 'scale-[1.02] -translate-y-1 cursor-pointer' : 'scale-100'
+                                } bg-red-500 hover:bg-red-600`}
+                                onMouseEnter={() => setBuyHovered(true)}
+                                onMouseLeave={() => setBuyHovered(false)}
+                            >
+                                <CreditCard className="w-4 h-4" />
+                                Buy Now
+                            </button>
+                        </div>
 
-                                    <div className="flex justify-between items-center py-3 border-b border-slate-200">
-                                        <span className="text-slate-600 text-sm">{car.specs.engine}</span>
-                                        <span className="text-slate-600 text-sm">{car.specs.horsepower}</span>
-                                        <span className="text-slate-600 text-sm">{car.specs.topSpeed}</span>
-                                        <span className="text-slate-600 text-sm">{car.specs.fuelEfficiency}</span>
-                                        <span className="font-semibold text-slate-900 text-sm">{car.specs.drivetrain}</span>
-                                        <span className="font-semibold text-slate-900 text-sm">{car.specs.weight}</span>
-                                    </div>
+                        {/* Key Features */}
+                        <div className="grid grid-cols-2 gap-4 pt-4">
+                            <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-slate-200">
+                                <div className="p-2 bg-red-100 rounded-lg">
+                                    <Users className="w-5 h-5 text-red-600" />
+                                </div>
+                                <div>
+                                    <p className="text-slate-500 text-sm">Seats</p>
+                                    <p className="font-semibold text-slate-900">{car.specs.seats}</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-slate-200">
+                                <div className="p-2 bg-red-100 rounded-lg">
+                                    <Fuel className="w-5 h-5 text-red-600" />
+                                </div>
+                                <div>
+                                    <p className="text-slate-500 text-sm">Fuel</p>
+                                    <p className="font-semibold text-slate-900">{car.specs.fuelType}</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-slate-200">
+                                <div className="p-2 bg-red-100 rounded-lg">
+                                    <Gauge className="w-5 h-5 text-red-600" />
+                                </div>
+                                <div>
+                                    <p className="text-slate-500 text-sm">Engine</p>
+                                    <p className="font-semibold text-slate-900">{car.specs.engine}</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-slate-200">
+                                <div className="p-2 bg-red-100 rounded-lg">
+                                    <MapPin className="w-5 h-5 text-red-600" />
+                                </div>
+                                <div>
+                                    <p className="text-slate-500 text-sm">Location</p>
+                                    <p className="font-semibold text-slate-900">New York</p>
+                                </div>
                             </div>
                         </div>
 
-                        {/* Available Colors */}
-                        <div>
-                            <h4 className="font-bold text-slate-900 mb-3 text-sm">AVAILABLE</h4>
+                        {/* Specifications */}
+                        <div className="bg-white rounded-xl p-6 border border-slate-200">
+                            <h4 className="font-bold text-slate-900 mb-4 text-lg">Specifications</h4>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-3">
+                                    <div className="flex justify-between py-2 border-b border-slate-100">
+                                        <span className="text-slate-600 text-sm">Horsepower</span>
+                                        <span className="font-semibold text-slate-900 text-sm">{car.specs.horsepower}</span>
+                                    </div>
+                                    <div className="flex justify-between py-2 border-b border-slate-100">
+                                        <span className="text-slate-600 text-sm">Top Speed</span>
+                                        <span className="font-semibold text-slate-900 text-sm">{car.specs.topSpeed}</span>
+                                    </div>
+                                    <div className="flex justify-between py-2 border-b border-slate-100">
+                                        <span className="text-slate-600 text-sm">Drivetrain</span>
+                                        <span className="font-semibold text-slate-900 text-sm">{car.specs.drivetrain}</span>
+                                    </div>
+                                </div>
+                                <div className="space-y-3">
+                                    <div className="flex justify-between py-2 border-b border-slate-100">
+                                        <span className="text-slate-600 text-sm">Fuel Efficiency</span>
+                                        <span className="font-semibold text-slate-900 text-sm">{car.specs.fuelEfficiency}</span>
+                                    </div>
+                                    <div className="flex justify-between py-2 border-b border-slate-100">
+                                        <span className="text-slate-600 text-sm">Weight</span>
+                                        <span className="font-semibold text-slate-900 text-sm">{car.specs.weight}</span>
+                                    </div>
+                                    <div className="flex justify-between py-2 border-b border-slate-100">
+                                        <span className="text-slate-600 text-sm">Transmission</span>
+                                        <span className="font-semibold text-slate-900 text-sm">{car.specs.transmission}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Modes*/}
+                        <div className="bg-white rounded-xl p-6 border border-slate-200">
+                            <h4 className="font-bold text-slate-900 mb-4">Available Modes</h4>
                             <div className="flex gap-3">
-                                <button className="w-8 h-8 rounded-full bg-red-500 ring-2 ring-offset-2 ring-red-500"></button>
-                                <button className="w-8 h-8 rounded-full bg-slate-800 hover:ring-2 hover:ring-offset-2 hover:ring-slate-800 transition"></button>
+                                {
+                                    car.modes.map((mode, index) => (
+                                        <button key={index} className="border px-4 py-3 rounded-2xl border-red-400 hover:bg-red-100 hover:bg-red-500 transition-all duration-300">{mode}</button>
+                                    ))
+                                }
                             </div>
                         </div>
                     </div>
@@ -92,10 +191,16 @@ const CarDetails = () => {
                 {/* Car Features Section */}
                 <div className="mt-16">
                     <h3 className="text-2xl font-bold text-slate-900 mb-8">Car Features</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {car.features.map((feature, index) => (
-                            <div key={index} className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition">
-                                <h4 className="font-bold text-slate-900 mb-3">{feature}</h4>
+                            <div
+                                key={index}
+                                className="bg-white border border-slate-200 rounded-xl p-5 hover:shadow-md transition-all duration-300 hover:border-slate-300"
+                            >
+                                <h4 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                                    {feature}
+                                </h4>
                             </div>
                         ))}
                     </div>
@@ -104,7 +209,6 @@ const CarDetails = () => {
 
             {/* Footer */}
             <Footer />
-        </div>
         </div>
     );
 };

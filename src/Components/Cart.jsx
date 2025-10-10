@@ -1,10 +1,18 @@
 import { ShoppingCart } from 'lucide-react';
+import {useNavigate} from "react-router";
 
 const ShoppingCartButton = ({ itemCount = 1, onClick }) => {
+    const navigate = useNavigate()
+    const onClickHandler = () => {
+        navigate("/cart")
+    }
+
     return (
-        <button style={{ animation: 'pulse-dramatic 3s infinite' }}
+
+
+        <button  style={{ animation: 'pulse-dramatic 3s infinite' }}
             type="button"
-            onClick={onClick}
+            onClick={onClickHandler}
             aria-label={`Shopping cart with ${itemCount} items`}
 
             className="fixed bottom-10 right-20 z-50 flex h-16 w-16 animate-pulse-dramatic cursor-pointer items-center justify-center rounded-full bg-red-500 shadow-lg shadow-red-400 transition-all duration-300 hover:-translate-y-2 hover:scale-110 hover:bg-red-600 hover:shadow-red-500"

@@ -1,17 +1,22 @@
 import React from 'react'
-import Navbar from "./Components/Navbar.jsx";
-import {Route, Routes} from "react-router";
+import {Route, Routes} from "react-router-dom";
 import Home from "./Pages/Home.jsx";
 import CarDetails from "@/Pages/CarDetails.jsx";
+import ScrollToTop from "@/Components/ScrollToTop.jsx";
+import Cars from "@/Pages/Cars.jsx";
+import CartPage from "@/Pages/CartPage.jsx";
 
 const App = () => {
     return (
         <div>
+            <ScrollToTop />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path={`car/:id`} element={<CarDetails />} />
+                <Route path="/cars" element={<Cars />} />
+                <Route path={`cars/:id`} element={<CarDetails />} />
+                <Route path="/cart" element={<CartPage />} />
+
                 {/*<Route path="/services" element={<Services />} />*/}
-                {/*<Route path="/car" element={<Car />} />*/}
                 {/*<Route path="/pricing" element={<Pricing />} />*/}
                 {/*<Route path="/about" element={<About />} />*/}
                 {/*<Route path="/login" element={<Login />} />*/}

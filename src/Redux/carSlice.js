@@ -18,14 +18,15 @@ import {useState} from "react";
 
 
 const initialState = {
-        cars : [
+    cars : [
         {
             "id": 1,
             "name": "Horizon Mirage Convertible",
             "price": 49,
             "image": car1,
             "description": "Experience the ultimate open-top driving pleasure with the Horizon Mirage Convertible. This sleek sports car combines luxury and performance in a stunning package.",
-            "rating" : 3,
+            "rating": 3,
+            "reviews": 5,
             "features": [
                 "2.0L Turbocharged Engine",
                 "8-Speed Automatic Transmission",
@@ -40,7 +41,10 @@ const initialState = {
                 "topSpeed": "240 km/h",
                 "fuelEfficiency": "12 L/100km",
                 "drivetrain": "Rear-Wheel Drive",
-                "weight": "1500 kg"
+                "weight": "1500 kg",
+                "transmission": "Automatic",
+                "seats": 4,
+                "fuelType": "Gasoline"
             },
             "modes": ["Eco", "Sport", "Comfort"]
         },
@@ -50,6 +54,8 @@ const initialState = {
             "price": 79,
             "image": car2,
             "description": "The Zephyr A4 Stratos delivers exceptional performance with its aerodynamic design and powerful engine. Perfect for those who crave speed and precision.",
+            "rating": 4,
+            "reviews": 12,
             "features": [
                 "3.0L V6 Engine",
                 "6-Speed Manual Transmission",
@@ -64,7 +70,10 @@ const initialState = {
                 "topSpeed": "280 km/h",
                 "fuelEfficiency": "10 L/100km",
                 "drivetrain": "All-Wheel Drive",
-                "weight": "1700 kg"
+                "weight": "1700 kg",
+                "transmission": "Manual",
+                "seats": 2,
+                "fuelType": "Gasoline"
             },
             "modes": ["Normal", "Sport", "Track"]
         },
@@ -74,6 +83,8 @@ const initialState = {
             "price": 99,
             "image": car3,
             "description": "A futuristic electric vehicle that redefines luxury and sustainability. The Aurora X5 Nebula offers cutting-edge technology and zero emissions.",
+            "rating": 5,
+            "reviews": 18,
             "features": [
                 "Electric Powertrain",
                 "100 kWh Battery",
@@ -88,7 +99,10 @@ const initialState = {
                 "topSpeed": "260 km/h",
                 "fuelEfficiency": "0 L/100km (Electric)",
                 "drivetrain": "All-Wheel Drive",
-                "weight": "2000 kg"
+                "weight": "2000 kg",
+                "transmission": "Single Speed",
+                "seats": 5,
+                "fuelType": "Electric"
             },
             "modes": ["Eco", "Sport", "Auto", "Off-Road"]
         },
@@ -98,6 +112,8 @@ const initialState = {
             "price": 59,
             "image": car4,
             "description": "The Vanguard CX2 Convertible offers premium comfort and style. With its refined interior and smooth ride, it's perfect for long-distance travel.",
+            "rating": 4,
+            "reviews": 9,
             "features": [
                 "2.5L Inline-4 Engine",
                 "CVT Transmission",
@@ -112,7 +128,10 @@ const initialState = {
                 "topSpeed": "200 km/h",
                 "fuelEfficiency": "7 L/100km",
                 "drivetrain": "Front-Wheel Drive",
-                "weight": "1400 kg"
+                "weight": "1400 kg",
+                "transmission": "CVT",
+                "seats": 4,
+                "fuelType": "Gasoline"
             },
             "modes": ["Eco", "Comfort", "Snow"]
         },
@@ -122,6 +141,8 @@ const initialState = {
             "price": 39,
             "image": car5,
             "description": "The Stellar Orion Hybrid combines fuel efficiency with modern styling. Ideal for urban driving and daily commutes.",
+            "rating": 4,
+            "reviews": 15,
             "features": [
                 "1.8L Hybrid Engine",
                 "CVT Transmission",
@@ -136,7 +157,10 @@ const initialState = {
                 "topSpeed": "180 km/h",
                 "fuelEfficiency": "5 L/100km",
                 "drivetrain": "Front-Wheel Drive",
-                "weight": "1300 kg"
+                "weight": "1300 kg",
+                "transmission": "CVT",
+                "seats": 5,
+                "fuelType": "Hybrid"
             },
             "modes": ["EV", "Hybrid", "Power"]
         },
@@ -146,6 +170,8 @@ const initialState = {
             "price": 69,
             "image": car6,
             "description": "The Vanguard C-Class Coupe blends elegance with performance. Its sophisticated design and powerful engine make it stand out on the road.",
+            "rating": 4,
+            "reviews": 11,
             "features": [
                 "2.0L Turbocharged Engine",
                 "8-Speed Automatic",
@@ -160,7 +186,10 @@ const initialState = {
                 "topSpeed": "250 km/h",
                 "fuelEfficiency": "8 L/100km",
                 "drivetrain": "Rear-Wheel Drive",
-                "weight": "1600 kg"
+                "weight": "1600 kg",
+                "transmission": "Automatic",
+                "seats": 4,
+                "fuelType": "Gasoline"
             },
             "modes": ["Eco", "Sport", "Comfort"]
         },
@@ -170,6 +199,8 @@ const initialState = {
             "price": 109,
             "image": car7,
             "description": "The Equinox F-Eclipse is a high-performance supercar that delivers breathtaking speed and handling. Experience the thrill of the open road.",
+            "rating": 5,
+            "reviews": 20,
             "features": [
                 "6.2L V8 Engine",
                 "7-Speed Dual-Clutch",
@@ -184,7 +215,10 @@ const initialState = {
                 "topSpeed": "320 km/h",
                 "fuelEfficiency": "14 L/100km",
                 "drivetrain": "Rear-Wheel Drive",
-                "weight": "1800 kg"
+                "weight": "1800 kg",
+                "transmission": "Dual-Clutch",
+                "seats": 2,
+                "fuelType": "Gasoline"
             },
             "modes": ["Street", "Track", "Drift"]
         },
@@ -194,6 +228,8 @@ const initialState = {
             "price": 89,
             "image": car8,
             "description": "The Radiant Solstice combines luxury with advanced technology. Its spacious interior and innovative features provide an unparalleled driving experience.",
+            "rating": 5,
+            "reviews": 17,
             "features": [
                 "3.5L V6 Engine",
                 "8-Speed Automatic",
@@ -208,7 +244,10 @@ const initialState = {
                 "topSpeed": "260 km/h",
                 "fuelEfficiency": "9 L/100km",
                 "drivetrain": "All-Wheel Drive",
-                "weight": "1900 kg"
+                "weight": "1900 kg",
+                "transmission": "Automatic",
+                "seats": 5,
+                "fuelType": "Gasoline"
             },
             "modes": ["Eco", "Sport", "Comfort", "Off-Road"]
         },
@@ -218,6 +257,8 @@ const initialState = {
             "price": 129,
             "image": car9,
             "description": "The Zenith Tempest is the pinnacle of automotive engineering. With its advanced safety systems and state-of-the-art technology, it's the ultimate driving machine.",
+            "rating": 5,
+            "reviews": 22,
             "features": [
                 "4.0L Twin-Turbo V8",
                 "8-Speed Automatic",
@@ -232,7 +273,10 @@ const initialState = {
                 "topSpeed": "300 km/h",
                 "fuelEfficiency": "11 L/100km",
                 "drivetrain": "All-Wheel Drive",
-                "weight": "2100 kg"
+                "weight": "2100 kg",
+                "transmission": "Automatic",
+                "seats": 4,
+                "fuelType": "Gasoline"
             },
             "modes": ["Eco", "Sport", "Comfort", "Race", "Off-Road"]
         },
@@ -242,6 +286,8 @@ const initialState = {
             "price": 59,
             "image": car10,
             "description": "Experience the ultimate open-top driving pleasure with the Horizon Mirage Convertible. This sleek sports car combines luxury and performance in a stunning package.",
+            "rating": 3,
+            "reviews": 5,
             "features": [
                 "2.0L Turbocharged Engine",
                 "8-Speed Automatic Transmission",
@@ -256,7 +302,10 @@ const initialState = {
                 "topSpeed": "240 km/h",
                 "fuelEfficiency": "12 L/100km",
                 "drivetrain": "Rear-Wheel Drive",
-                "weight": "1500 kg"
+                "weight": "1500 kg",
+                "transmission": "Automatic",
+                "seats": 4,
+                "fuelType": "Gasoline"
             },
             "modes": ["Eco", "Sport", "Comfort"]
         },
@@ -266,6 +315,8 @@ const initialState = {
             "price": 49,
             "image": car11,
             "description": "The Vanguard Phoenix C-Class offers premium comfort and style. With its refined interior and smooth ride, it's perfect for long-distance travel.",
+            "rating": 4,
+            "reviews": 10,
             "features": [
                 "2.5L Inline-4 Engine",
                 "CVT Transmission",
@@ -280,7 +331,10 @@ const initialState = {
                 "topSpeed": "200 km/h",
                 "fuelEfficiency": "7 L/100km",
                 "drivetrain": "Front-Wheel Drive",
-                "weight": "1400 kg"
+                "weight": "1400 kg",
+                "transmission": "CVT",
+                "seats": 4,
+                "fuelType": "Gasoline"
             },
             "modes": ["Eco", "Comfort", "Snow"]
         },
@@ -290,6 +344,8 @@ const initialState = {
             "price": 79,
             "image": car12,
             "description": "The Apex Autos Typhoon Model 3 delivers exceptional performance with its aerodynamic design and powerful engine. Perfect for those who crave speed and precision.",
+            "rating": 4,
+            "reviews": 13,
             "features": [
                 "3.0L V6 Engine",
                 "6-Speed Manual Transmission",
@@ -304,7 +360,10 @@ const initialState = {
                 "topSpeed": "280 km/h",
                 "fuelEfficiency": "10 L/100km",
                 "drivetrain": "All-Wheel Drive",
-                "weight": "1700 kg"
+                "weight": "1700 kg",
+                "transmission": "Manual",
+                "seats": 2,
+                "fuelType": "Gasoline"
             },
             "modes": ["Normal", "Sport", "Track"]
         },
@@ -314,6 +373,8 @@ const initialState = {
             "price": 59,
             "image": car13,
             "description": "The Radiant Solstice Convertible combines luxury with advanced technology. Its spacious interior and innovative features provide an unparalleled driving experience.",
+            "rating": 5,
+            "reviews": 16,
             "features": [
                 "3.5L V6 Engine",
                 "8-Speed Automatic",
@@ -328,12 +389,16 @@ const initialState = {
                 "topSpeed": "260 km/h",
                 "fuelEfficiency": "9 L/100km",
                 "drivetrain": "All-Wheel Drive",
-                "weight": "1900 kg"
+                "weight": "1900 kg",
+                "transmission": "Automatic",
+                "seats": 4,
+                "fuelType": "Gasoline"
             },
             "modes": ["Eco", "Sport", "Comfort", "Off-Road"]
         }
     ],
-        selectedCarIs : null
+
+    selectedCarIs : null
 }
 const carSlice = createSlice({
     name: "car",

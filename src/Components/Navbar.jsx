@@ -46,7 +46,7 @@ const Navbar = () => {
             {/* Desktop Menu - No changes needed here */}
             <ul className="hidden md:flex gap-10 justify-center items-center">
                 <AnimatedNavLink to="/services">Services</AnimatedNavLink>
-                <AnimatedNavLink to="/car">Car</AnimatedNavLink>
+                <AnimatedNavLink to="/cars">Cars</AnimatedNavLink>
                 <AnimatedNavLink to="/pricing">Pricing</AnimatedNavLink>
                 <AnimatedNavLink to="/about">About</AnimatedNavLink>
             </ul>
