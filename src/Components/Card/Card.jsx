@@ -1,16 +1,21 @@
-// Card.jsx
+
 import React, { useState } from 'react';
 import './Card.css';
+import {useDispatch, useSelector} from "react-redux";
+import {addToCart} from "@/Redux/cartSlice.js";
+
 
 const Card = ({ car, isSelected = false, onRentClick }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const dispatch = useDispatch();
+    const data = useSelector((state)=> state.cart)
 
     return (
         <div
             className={`card ${isSelected ? 'selected' : ''} ${isHovered ? 'hovered' : ''}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            onClick={() => onRentClick(car.id)} // Optional: make whole card clickable
+            onClick={() => onRentClick(car.id)}
         >
             <div className="car-image-container">
                 <img loading={"lazy"} src={car.image} alt={car.name} className="car-image" />
@@ -25,11 +30,14 @@ const Card = ({ car, isSelected = false, onRentClick }) => {
                     className="rent-button"
                     onClick={(e) => {
                         e.stopPropagation(); // Prevent triggering card click
-                        onRentClick(car.id);
+                        dispatch(
+                            addToCart(car),
+                        );
                     }}
                 >
-                    Rent
+                    Add To Cart
                 </button>
+
             </div>
         </div>
     );

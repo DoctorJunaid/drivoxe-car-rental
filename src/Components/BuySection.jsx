@@ -1,9 +1,9 @@
-// ParentComponent.jsx
 import React, { useState } from 'react';
 import Card from './Card/Card.jsx';
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router";
 import {setSelectedCarId} from "@/Redux/carSlice.js";
+import {ToastContainer, Zoom} from "react-toastify";
 
 
 const BuySection = () => {
@@ -63,8 +63,21 @@ const BuySection = () => {
                     )
                 })}
             </div>
-
-    </div>
+            <ToastContainer
+                position="top-center"
+                autoClose={1000}
+                limit={3}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Zoom}
+            />
+        </div>
     );
 };
 export default BuySection;

@@ -1,4 +1,4 @@
-// src/components/Footer.jsx
+
 
 import React from 'react';
 import { FaArrowRight, FaArrowUp } from 'react-icons/fa';
@@ -139,7 +139,7 @@ const Footer = () => {
             </div>
 
             {/* Custom CSS for underline animation */}
-            <style jsx>{`
+            <style>{`
                 .footer-link a::after {
                     content: '';
                     position: absolute;
