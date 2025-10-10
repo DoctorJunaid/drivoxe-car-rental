@@ -86,6 +86,8 @@
         // ✅ Empty Cart Screen
         if (cartItems.length === 0) {
             return (
+                <>
+                <Navbar />
                 <div className="min-h-screen bg-white flex flex-col">
                     <div className="flex-1 flex items-center justify-center px-4">
                         <div className="text-center space-y-6 max-w-md">
@@ -108,10 +110,12 @@
                         </div>
                     </div>
                 </div>
+                <Footer />
+                </>
             );
         }
     
-        // ✅ Main Cart Layout
+
         return (
             <div>
                 <Navbar />
