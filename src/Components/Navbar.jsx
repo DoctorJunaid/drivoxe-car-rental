@@ -85,7 +85,7 @@ const Navbar = () => {
             >
                 <ul className="flex flex-col items-center gap-6 py-8 text-[#222222]">
                     <li><Link onClick={closeMobileMenu} className="hover:text-[#FD3B3B]" to="/">Home</Link></li>
-                    <li><Link onClick={closeMobileMenu} className="hover:text-[#FD3B3B]" to="/car">Car</Link></li>
+                    <li><Link onClick={closeMobileMenu} className="hover:text-[#FD3B3B]" to="/cars">Car</Link></li>
                     <li><Link onClick={closeMobileMenu} className="hover:text-[#FD3B3B]" to="/about">ABOUT</Link></li>
                     <li><Link onClick={closeMobileMenu} className="hover:text-[#FD3B3B]" to="/faqs">FAQS</Link></li>
                 </ul>

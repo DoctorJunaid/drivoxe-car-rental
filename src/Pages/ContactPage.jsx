@@ -15,6 +15,9 @@ import Navbar from "@/Components/Navbar.jsx";
 import Footer from "@/Components/Footer.jsx";
 import Cart from "@/Components/Cart.jsx";
 import { Link } from "react-router-dom";
+import footerImage from "@/assets/footer.webp";
+import appStoreBadge from "@/assets/App-store.webp";
+import googlePlayBadge from "@/assets/Google.webp";
 
 const ContactPage = () => {
     const [formData, setFormData] = useState({
@@ -381,7 +384,7 @@ const ContactPage = () => {
                                     <iframe
                                         className={"w-full h-full border-none"}
                                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.205665920275!2d71.57800377555479!3d34.01293141980532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d93d7b32e9b495%3A0xb847191c9c31f982!2sHashtnagri%20Rd%2C%20Hashtnagri%2C%20Peshawar%2C%20Pakistan!5e0!3m2!1sen!2s!4v1760175473466!5m2!1sen!2s"
-                                         allowFullScreen="" loading="lazy"
+                                         allowFullScreen=""
                                         referrerPolicy="no-referrer-when-downgrade">
                                     </iframe>
                         </div>
@@ -390,7 +393,48 @@ const ContactPage = () => {
             </div>
 
             <Cart/>
-            <Footer/>
+            <Footer children={
+                <div className="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-[24px] sm:rounded-[32px] lg:rounded-[40px] overflow-hidden mb-8 lg:mb-12">
+                    <div className="relative w-full min-h-[280px] sm:min-h-[320px] lg:min-h-[350px]">
+                        {/* Car Image - Full Width Background */}
+                        <div className="absolute inset-0 w-full h-full">
+                            <img
+                                src={footerImage}
+                                alt="Red Sports Car"
+                                className="w-full h-full object-cover object-center"
+                                style={{ objectPosition: '60% center' }}
+                            />
+
+                        </div>
+
+                        {/* Content Overlay - Top Right */}
+                        <div className="relative z-20 flex justify-end items-start h-full">
+                            <div className="w-full sm:w-[55%] lg:w-[50%] px-6 py-8 sm:py-10 lg:px-12 lg:py-16">
+                                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 lg:mb-4">
+                                    Ready to Go?
+                                </h1>
+                                <p className="text-sm sm:text-base lg:text-lg text-gray-300 mb-6 lg:mb-8 leading-relaxed">
+                                    Book your car wherever you are<br />and ride with us now!
+                                </p>
+
+                                {/* App Store Buttons */}
+                                <div className="flex flex-wrap gap-3 lg:gap-4">
+                                    <img
+                                        src={appStoreBadge}
+                                        alt="Download on the App Store"
+                                        className="h-10 sm:h-11 lg:h-12 cursor-pointer transform hover:scale-105 hover:brightness-110 transition-all duration-300"
+                                    />
+                                    <img
+                                        src={googlePlayBadge}
+                                        alt="Get it on Google Play"
+                                        className="h-10 sm:h-11 lg:h-12 cursor-pointer transform hover:scale-105 hover:brightness-110 transition-all duration-300"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }/>
         </div>
     );
 };

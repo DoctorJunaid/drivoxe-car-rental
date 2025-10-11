@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { Star, Calendar, CreditCard, MapPin, Users, Fuel, Gauge } from 'lucide-react';
-import { useSelector } from "react-redux";
-import { useParams } from "react-router";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate, useParams} from "react-router";
 import Navbar from "@/Components/Navbar.jsx";
 import Footer from "@/Components/Footer.jsx";
 import {Link} from "react-router-dom";
 import Cart from "@/Components/Cart.jsx";
+import {addToCart} from "@/Redux/cartSlice.js";
 
 const CarDetails = () => {
+    const dispatch = useDispatch()
     const { id } = useParams();
     const cars = useSelector((state) => state.car.cars);
+    const navigate = useNavigate();
 
     const car = cars.find(e => e.id === parseInt(id));
     if (!car) {
@@ -24,7 +27,16 @@ const CarDetails = () => {
     const formatPrice = (price) => {
         return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     };
+    const rentCar = (e) => {
+        dispatch(addToCart(car));
+        navigate('/cart')
+    }
+    const buyCar = (e) => {
+        dispatch(addToCart(car));
+        navigate('/cart')
 
+
+    }
     return (
         <div className="min-h-screen bg-white">
             <Navbar />
@@ -77,27 +89,29 @@ const CarDetails = () => {
 
                         {/* Action Buttons - Positioned to the right like in reference */}
                         <div className="flex   sm:justify-start gap-4 pt-4">
-                         <Link to={"/cart"}><button
+                         <button
                                 className={`flex items-center justify-center gap-2 py-3 px-6 rounded-full font-bold text-white shadow-md transition-all duration-300 transform ${
                                     rentHovered ? 'scale-[1.02]  -translate-y-2 cursor-pointer' : 'scale-100'
                                 } bg-red-500 hover:bg-red-600`}
                                 onMouseEnter={() => setRentHovered(true)}
                                 onMouseLeave={() => setRentHovered(false)}
+                                onClick={(e) => rentCar(car.id)}
                             >
                                 <Calendar className="w-4 h-4" />
                                 Rent Now
-                            </button> </Link>
+                            </button>
 
-                     <Link to={"/cart"}> <button
+                     <button
                                 className={`flex items-center justify-center gap-2 py-3 px-6 rounded-full font-bold text-white shadow-md transition-all duration-300 transform ${
                                     buyHovered ? 'scale-[1.02] -translate-y-1 cursor-pointer' : 'scale-100'
                                 } bg-red-500 hover:bg-red-600`}
                                 onMouseEnter={() => setBuyHovered(true)}
                                 onMouseLeave={() => setBuyHovered(false)}
+                                onClick={(e) => buyCar(car.id)}
                             >
                                 <CreditCard className="w-4 h-4" />
                                 Buy Now
-                            </button></Link>
+                            </button>
                     </div>
 
                         {/* Key Features */}
