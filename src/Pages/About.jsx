@@ -5,6 +5,8 @@ import aboutHero from "@/assets/aboutHero.webp";
 import Footer from "@/Components/Footer.jsx";
 import  aboutFooter from "@/assets/aboutFooter.webp";
 import Carousel from "@/Components/Carousal.jsx";
+import aboutHeroImage from '@/assets/aboutHeroImage.webp'
+import {MoveRight} from "lucide-react";
 
 
 const About = () => {
@@ -25,13 +27,47 @@ const About = () => {
                 />
             </div>
             <Carousel />
-            <Section>
+            <section className="relative flex flex-col lg:flex-row items-center justify-between w-full bg-white overflow-hidden py-8 sm:py-12 lg:py-16 px-4 sm:px-8 lg:px-12 xl:px-16">
+
+                <div className="relative w-full lg:w-[55%] flex flex-col items-start">
+
+                    <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                        <div className="flex items-center justify-center h-10 w-10 bg-red-500 rounded-full cursor-pointer hover:scale-110 transition-transform duration-300">
+                            <MoveRight size={20} className="text-white" />
+                        </div>
+                        <h3 className="text-sm font-semibold tracking-wider text-gray-800">
+                            PICK THE CAR!
+                        </h3>
+                    </div>
 
 
-            </Section>
+                    <div className="w-full">
+                        <img
+                            src={aboutHeroImage}
+                            alt="Red Sports Car"
+                            className="w-full h-auto object-contain drop-shadow-2xl"
+                        />
+                    </div>
+                </div>
 
-
-
+                {/* Right Side */}
+                <div className="relative w-full lg:w-[42%] bg-white shadow-2xl rounded-xl p-6 sm:p-8 lg:p-10 mt-6 lg:mt-0 lg:-ml-12">
+                    <p className="text-gray-500 uppercase tracking-widest font-semibold mb-2 text-xs">
+                        Our Journey
+                    </p>
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-4">
+                        Pioneering Premium Car Rentals
+                    </h2>
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
+                        Drivoxe embarked on a remarkable journey over a decade ago, driven by a
+                        relentless passion for redefining the travel experience. From the outset,
+                        our mission was clear: to provide the finest vehicles and exceptional
+                        service to make every journey unforgettable. We've upheld our commitment
+                        to delivering quality and variety, offering a diverse range of
+                        meticulously maintained vehicles to ensure you always drive in style.
+                    </p>
+                </div>
+            </section>
 
             <Footer children={
                 <div className="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-[24px] sm:rounded-[32px] lg:rounded-[40px] overflow-hidden mb-8 lg:mb-12">
