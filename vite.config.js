@@ -14,6 +14,7 @@ export default defineConfig({
         },
     },
     server: {
-        historyApiFallback: true, // for local dev refresh
+        historyApiFallback: true,
+
     },
 })

@@ -45,10 +45,10 @@ const Navbar = () => {
 
             {/* Desktop Menu - No changes needed here */}
             <ul className="hidden md:flex gap-10 justify-center items-center">
-                <AnimatedNavLink to="/services">Services</AnimatedNavLink>
-                <AnimatedNavLink to="/cars">Cars</AnimatedNavLink>
-                <AnimatedNavLink to="/pricing">Pricing</AnimatedNavLink>
-                <AnimatedNavLink to="/about">About</AnimatedNavLink>
+                <AnimatedNavLink to="/">HOME</AnimatedNavLink>
+                <AnimatedNavLink to="/cars">CARS</AnimatedNavLink>
+                <AnimatedNavLink to="/about">ABOUT</AnimatedNavLink>
+                <AnimatedNavLink to="/faqs">FAQS</AnimatedNavLink>
             </ul>
 
             {/* Desktop Action Buttons */}
@@ -57,7 +57,7 @@ const Navbar = () => {
                     className="font-medium text-[#FD3B3B] hover:opacity-80 transform hover:-translate-y-0.5 transition-transform duration-300"
                     to="/contact"
                 >
-                    Contact
+                    CONTACT
                 </Link>
                 <div className="h-6 w-[3px] bg-[#FD3B3B]" />
                 <Link
@@ -84,10 +84,10 @@ const Navbar = () => {
                 `}
             >
                 <ul className="flex flex-col items-center gap-6 py-8 text-[#222222]">
-                    <li><Link onClick={closeMobileMenu} className="hover:text-[#FD3B3B]" to="/services">Services</Link></li>
+                    <li><Link onClick={closeMobileMenu} className="hover:text-[#FD3B3B]" to="/">Home</Link></li>
                     <li><Link onClick={closeMobileMenu} className="hover:text-[#FD3B3B]" to="/car">Car</Link></li>
-                    <li><Link onClick={closeMobileMenu} className="hover:text-[#FD3B3B]" to="/pricing">Pricing</Link></li>
-                    <li><Link onClick={closeMobileMenu} className="hover:text-[#FD3B3B]" to="/about">About</Link></li>
+                    <li><Link onClick={closeMobileMenu} className="hover:text-[#FD3B3B]" to="/about">ABOUT</Link></li>
+                    <li><Link onClick={closeMobileMenu} className="hover:text-[#FD3B3B]" to="/faqs">FAQS</Link></li>
                 </ul>
                 <div className="flex flex-col items-center gap-5 pb-8 px-5">
                     <Link onClick={closeMobileMenu} className="font-medium text-[#FD3B3B]" to="/contact">Contact</Link>

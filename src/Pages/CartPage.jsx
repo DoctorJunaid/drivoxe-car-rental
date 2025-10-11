@@ -278,77 +278,81 @@
                         <div className="lg:col-span-1">
                             <div className="bg-white border border-slate-200 rounded-2xl p-6 sticky top-4 space-y-6">
                                 <h3 className="text-xl font-bold text-slate-900">Order Summary</h3>
-    
+
                                 {/* Promo Code */}
                                 <div className="space-y-2">
-                                    <label className="text-sm font-medium text-slate-700">
-                                        Promo Code
-                                    </label>
-                                    <div className="flex gap-2">
+                                    <label className="text-sm font-medium text-slate-700">Promo Code</label>
+
+                                    {/* ✅ Responsive wrapper fix */}
+                                    <div className="flex flex-col sm:flex-row gap-2 w-full">
                                         <input
                                             type="text"
                                             placeholder="Enter code"
                                             value={promoCode}
                                             onChange={(e) => setPromoCode(e.target.value)}
                                             disabled={appliedPromo}
-                                            className="flex-1 px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent disabled:bg-slate-100"
+                                            className="w-full sm:flex-1 px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent disabled:bg-slate-100"
                                         />
+
                                         <button
                                             onClick={applyPromoCode}
                                             disabled={appliedPromo}
-                                            className="px-4 py-2 bg-red-500 text-white rounded-lg font-medium hover:bg-red-600 disabled:bg-slate-300 disabled:cursor-not-allowed transition-colors duration-300 flex items-center gap-2"
+                                            className="w-full sm:w-auto px-4 py-2 bg-red-500 text-white rounded-lg font-medium hover:bg-red-600 disabled:bg-slate-300 disabled:cursor-not-allowed transition-colors duration-300 flex items-center justify-center gap-2"
                                         >
-                                            <Tag className="w-4 h-4" />
-                                            Apply
+                                            <Tag className="w-4 h-4 flex-shrink-0" />
+                                            <span className="truncate">Apply</span>
                                         </button>
                                     </div>
+
                                     {appliedPromo && (
                                         <p className="text-sm text-green-600 font-medium">
                                             ✓ Promo code applied successfully!
                                         </p>
                                     )}
                                 </div>
-    
+
                                 {/* Summary */}
-                                <div className="space-y-3 py-4 border-y border-slate-200">
-                                    <div className="flex justify-between text-slate-700">
-                                        <span>Subtotal</span>
-                                        <span className="font-semibold">${formatPrice(subtotal)}</span>
+                                <div className="space-y-3 py-4 border-y border-slate-200 overflow-hidden">
+                                    <div className="flex justify-between text-slate-700 min-w-0">
+                                        <span className="truncate">Subtotal</span>
+                                        <span className="font-semibold whitespace-nowrap">${formatPrice(subtotal)}</span>
                                     </div>
-                                    <div className="flex justify-between text-slate-700">
-                                        <span>Tax (10%)</span>
-                                        <span className="font-semibold">${formatPrice(tax)}</span>
+
+                                    <div className="flex justify-between text-slate-700 min-w-0">
+                                        <span className="truncate">Tax (10%)</span>
+                                        <span className="font-semibold whitespace-nowrap">${formatPrice(tax)}</span>
                                     </div>
+
                                     {appliedPromo && (
-                                        <div className="flex justify-between text-green-600">
-                                            <span>Discount (15%)</span>
-                                            <span className="font-semibold">
-                          -${formatPrice(discount)}
-                        </span>
+                                        <div className="flex justify-between text-green-600 min-w-0">
+                                            <span className="truncate">Discount (15%)</span>
+                                            <span className="font-semibold whitespace-nowrap">-${formatPrice(discount)}</span>
                                         </div>
                                     )}
-                                    <div className="flex justify-between text-slate-700">
-                      <span className="flex items-center gap-1">
-                        <Truck className="w-4 h-4" />
-                        Shipping
-                      </span>
-                                        <span className="font-semibold text-green-600">Free</span>
+
+                                    <div className="flex justify-between text-slate-700 min-w-0">
+        <span className="flex items-center gap-1 truncate">
+          <Truck className="w-4 h-4 flex-shrink-0" />
+          <span>Shipping</span>
+        </span>
+                                        <span className="font-semibold text-green-600 whitespace-nowrap">Free</span>
                                     </div>
                                 </div>
-    
-                                <div className="flex justify-between items-center">
+
+                                <div className="flex justify-between items-center flex-wrap gap-2">
                                     <span className="text-lg font-bold text-slate-900">Total</span>
-                                    <span className="text-2xl font-bold text-red-500">
-                      ${formatPrice(total)}
-                    </span>
+                                    <span className="text-2xl font-bold text-red-500 whitespace-nowrap">
+        ${formatPrice(total)}
+      </span>
                                 </div>
-    
+
                                 <button className="w-full py-3 bg-red-500 text-white rounded-full font-bold hover:bg-red-600 transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
                                     <CreditCard className="w-5 h-5" />
                                     Proceed to Checkout
                                 </button>
                             </div>
                         </div>
+
                     </div>
                 </div>
     

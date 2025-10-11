@@ -5,6 +5,7 @@ import CarDetails from "@/Pages/CarDetails.jsx";
 import ScrollToTop from "@/Components/ScrollToTop.jsx";
 import Cars from "@/Pages/Cars.jsx";
 import CartPage from "@/Pages/CartPage.jsx";
+import ContactPage from "@/Pages/ContactPage.jsx";
 
 const App = () => {
     return (
@@ -21,7 +22,7 @@ const App = () => {
                 {/*<Route path="/about" element={<About />} />*/}
                 {/*<Route path="/login" element={<Login />} />*/}
                 {/*<Route path="/signup" element={<Signup />} />*/}
-                {/*<Route path="/contact" element={<Contact />} />*/}
+                <Route path="/contact" element={<ContactPage />} />
             </Routes>
         </div>
     )
