@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useRef, useState} from 'react';
 import Card from './Card/Card.jsx';
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router";
@@ -13,6 +13,7 @@ const BuySection = () => {
     const [cardsPerPage , setcardsPerPage ] = useState(6)
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const carSectionRef = useRef(null);
 
 
         const cars = useSelector((state)=> state.car.cars);
@@ -29,11 +30,15 @@ const BuySection = () => {
     for (let i = 1; i <= Math.ceil(cars.length / cardsPerPage); i++) {
         pages.push(i);
     }
+    const handlePageChange = (page) => {
+        setcurrentPage(page);
+        carSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
     return (
         <div>
             <h2 className={"text-2xl text-gray-800 mt-30 font-bold text-center "} >THE CARS</h2>
             <h1 className={"text-5xl m-10   font-semibold text-center"}>Our Impressive Fleet</h1>
-        <div style={{
+        <div ref={carSectionRef} style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
             gap: '30px',
@@ -55,7 +60,7 @@ const BuySection = () => {
                         <button
                             key={index}
                             className={"bg-transparent border-red-500 text-red-500 w-10 h-10 rounded-full border mr-2 hover:bg-red-500 hover:text-white cursor-pointer"}
-                            onClick={() => setcurrentPage(page)}
+                            onClick={() => handlePageChange(page)}
                             disabled={currentPage === page}
                         >
                             {page}

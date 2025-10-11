@@ -7,6 +7,7 @@ import Footer from "@/Components/Footer.jsx";
 import {Link} from "react-router-dom";
 import Cart from "@/Components/Cart.jsx";
 import {addToCart} from "@/Redux/cartSlice.js";
+import carDetailsFooter from "@/assets/carDetailsFooter.webp";
 
 const CarDetails = () => {
     const dispatch = useDispatch()
@@ -224,7 +225,42 @@ const CarDetails = () => {
             <Cart />
 
             {/* Footer */}
-            <Footer />
+            <Footer children={
+                <div className="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-[24px] sm:rounded-[32px] lg:rounded-[40px] overflow-hidden mb-8 lg:mb-12">
+                    <div className="relative w-full min-h-[280px] sm:min-h-[320px] lg:min-h-[350px]">
+                        <div className="absolute inset-0 w-full h-full ">
+                            <img
+                                src={carDetailsFooter}
+                                alt="Red Sports Car"
+                                className="w-full h-full object-cover object-center"
+                                style={{ objectPosition: '60% center' }}
+                            />
+
+
+                        </div>
+
+                        {/* Content Overlay - Top Right */}
+                        <div className="relative z-20 h-full flex flex-col  justify-center   items-center gap-10 px-6 py-8 sm:py-10 lg:px-12 lg:py-16">
+                            <div className="w-full sm:w-[55%] lg:w-[50%]">
+                                <h3 className="text-3xl font-semibold  mb-2 text-white text-center">Book Your Adventure Today and Feel the Power of the Open Road.</h3>
+
+                            </div>
+
+                            <div className="flex flex-wrap gap-3 lg:gap-4 justify-start">
+                                <button
+                                    className="bg-red-500 hover:bg-red-700 text-white font-semibold py-3 px-8 rounded-full
+                                    hover:scale-105 transition-transform duration-300 shadow-md
+                                    text-sm sm:text-base lg:text-lg cursor-pointer"
+                                >
+                                    Let’s Drive with Us
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            } />
         </div>
     );
 };

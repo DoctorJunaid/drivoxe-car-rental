@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useRef, useState} from 'react';
 import Card from '/src/Components/Card/Card.jsx';
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router";
@@ -19,7 +19,7 @@ const Cars = () => {
     const [cardsPerPage , setcardsPerPage ] = useState(9)
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
+    const carSectionRef = useRef(null);
 
     const cars = useSelector((state)=> state.car.cars);
 
@@ -35,6 +35,11 @@ const Cars = () => {
     for (let i = 1; i <= Math.ceil(cars.length / cardsPerPage); i++) {
         pages.push(i);
     }
+
+    const handlePageChange = (page) => {
+        setcurrentPage(page);
+        carSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
     return (
         <div>
             <Navbar />
@@ -53,7 +58,7 @@ const Cars = () => {
                 />
             </div>
 
-            <div style={{
+            <div ref={carSectionRef} style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
                 gap: '30px',
@@ -75,7 +80,7 @@ const Cars = () => {
                         <button
                             key={index}
                             className={"bg-transparent border-red-500 text-red-500 w-10 h-10 rounded-full border mr-2 hover:bg-red-500 hover:text-white cursor-pointer"}
-                            onClick={() => setcurrentPage(page)}
+                            onClick={() => handlePageChange(page)}
                             disabled={currentPage === page}
                         >
                             {page}
