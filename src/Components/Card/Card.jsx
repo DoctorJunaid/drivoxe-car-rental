@@ -26,7 +26,13 @@ const Card = ({ car, isSelected = false, onRentClick }) => {
                     <span className="price-label">Starting at</span>
                     <span className="price-amount">${car.price}/day</span>
                 </div>
-                <button
+                <div className={"flex  gap-2 items-center"}>
+                    <button
+                        className="rent-button"
+                    >
+                        View
+                    </button>
+                    <button
                     className="rent-button"
                     onClick={(e) => {
                         e.stopPropagation(); // Prevent triggering card click
@@ -36,7 +42,9 @@ const Card = ({ car, isSelected = false, onRentClick }) => {
                     }}
                 >
                     Add To Cart
-                </button>
+                    </button>
+                </div>
+
 
             </div>
         </div>

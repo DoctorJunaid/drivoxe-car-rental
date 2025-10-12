@@ -1,16 +1,110 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+GitHub topics
+react, vite, redux-toolkit, react-router, tailwindcss, framer-motion, car-rental, supabase, vercel, javascript
 
-Currently, two official plugins are available:
+<p align="center">
+  <img src="/src/assets/thumbnail.png" alt="Drivoxe Car Rental" width="100%" style="max-width:900px; border-radius:12px;" />
+</p>
+Release notes (GitHub Release v1.0.0) <br>
+- Added:
+    - Pages: Home, Cars, Car Details, Cart, Contact, FAQs, About, 404
+    - Global state: cart, cars (Redux Toolkit)
+    - Client-side routing (React Router)
+    - Animations (framer-motion)
+    - Responsive UI (Tailwind CSS)
+    - Build tooling: Vite; Deployment: Vercel
+- Upcoming:
+    - Supabase authentication (email/password + OAuth)
+    - Booking workflow and payments
+    - Profile, orders, and admin basics
+- Tech:
+  React 19, React Router 7, Redux Toolkit 2, Tailwind CSS 4, framer-motion 12, Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Drivoxe Car Rental
 
-## React Compiler
+A modern car rental web app built with React, Vite, Tailwind CSS, Redux Toolkit, and framer-motion.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Live: https://drivoxe-car-rental.vercel.app/
+- GitHub: https://github.com/doctorJunaid/drivoxe-car-rental
 
-## Expanding the ESLint configuration
+## Status
+Version 1.0.0 released. Core UI and cart flow are live. Login/auth via Supabase coming soon.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+- Pages: Home, Cars, Car Details, Cart, Contact, FAQs, About, 404
+- State management with Redux Toolkit
+- Client-side routing with React Router
+- Smooth animations with framer-motion
+- Responsive UI with Tailwind CSS
+- Vite dev/build and Vercel deploy
+
+## Roadmap
+- Supabase authentication (login/signup, session management)
+- Bookings flow and payments
+- User profiles and order history
+- Basic admin for cars and orders
+
+## Tech Stack
+- React 19, React Router 7
+- Redux Toolkit 2
+- Tailwind CSS 4
+- framer-motion 12
+- Vite
+- Deployed on Vercel
+
+## Getting Started
+Prerequisites: Node 18+
+
+1. Clone
+   git clone https://github.com/YourUser/drivoxe-car-rental.git
+   cd drivoxe-car-rental
+
+2. Install
+   npm install
+
+3. Env
+    - Copy .env.local.example to .env.local (create if missing)
+    - Add placeholders now; Supabase keys will be used when auth lands:
+      VITE_SUPABASE_URL=
+      VITE_SUPABASE_ANON_KEY=
+
+4. Run
+   npm run dev
+
+5. Build
+   npm run build
+   npm run preview
+
+## Project Scripts
+- dev: Start Vite dev server
+- build: Production build
+- preview: Preview production build
+- lint: Lint with ESLint
+
+## Folder Structure
+- src/Pages: Route pages
+- src/Components: Reusable UI components
+- src/Redux: Slices/store
+- src/assets: Images and static assets
+- src/main.jsx: App bootstrap
+- vite.config.js: Vite config
+
+## Contributing
+Issues and PRs welcome. Please open an issue before large changes.
+DoctorJunaid
+
+## License
+MIT
+
+## Acknowledgements
+Thanks to my teacher/mentor @YourTeacherName for guidance.
+
+Repo files to add/update
+- README.md: replace with the above.
+- .env.local.example:
+  VITE_SUPABASE_URL=
+  VITE_SUPABASE_ANON_KEY=
+- GitHub Release: tag v1.0.0 with the release notes above.
+- GitHub description and topics: set as above.
+
+Need me to personalize teacher handle, live URL, and repo link? Send them and I’ll finalize.

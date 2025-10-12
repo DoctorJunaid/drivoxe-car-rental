@@ -84,16 +84,7 @@ const ContactPage = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-20"
                 >
-                    <motion.div
 
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5 }}
-                        className="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-2 rounded-full text-sm font-semibold mb-6"
-                    >
-                        <Sparkles className="w-4 h-4" />
-                        Let's Connect
-                    </motion.div>
 
                     <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6">
                         Get in Touch
