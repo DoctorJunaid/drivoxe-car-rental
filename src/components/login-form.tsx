@@ -2,6 +2,8 @@ import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import introVideo1 from "@/assets/bgIntroVideo.mp4_compressed.webm"
+import introVideo2 from "@/assets/bgintrovideo2.mp4_compressed.webm"
 import {
     Field,
     FieldDescription,
@@ -106,7 +108,7 @@ function LoginForm({ onSwitchToSignup }: { onSwitchToSignup: () => void }) {
                 </div>
                 <div className="bg-muted relative hidden md:block">
                     <video
-                        src="src/assets/bgIntroVideo.mp4_compressed.webm"
+                        src={introVideo1}
                         autoPlay
                         loop
                         muted
@@ -125,7 +127,7 @@ function SignupForm({ onSwitchToLogin }: { onSwitchToLogin: () => void }) {
             <CardContent className="grid p-0 md:grid-cols-2">
                 <div className="bg-muted relative hidden md:block">
                     <video
-                        src="src/assets/bgintrovideo2.mp4_compressed.webm"
+                        src={introVideo2}
                         autoPlay
                         loop
                         muted
