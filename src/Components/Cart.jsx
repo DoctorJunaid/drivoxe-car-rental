@@ -18,7 +18,7 @@ const ShoppingCartButton = ({  onClick }) => {
             onClick={onClickHandler}
             aria-label={`Shopping cart with ${itemCount} items`}
 
-            className="fixed bottom-2 right-2 md:bottom-10 md:right-20 z-50 flex h-16 w-16 animate-pulse-dramatic cursor-pointer items-center justify-center rounded-full bg-red-500 shadow-lg shadow-red-400 transition-all duration-300 hover:-translate-y-2 hover:scale-110 hover:bg-red-600 hover:shadow-red-500"
+            className="fixed bottom-2 right-3 md:bottom-10 md:right-20 z-50 flex h-16 w-16 animate-pulse-dramatic cursor-pointer items-center justify-center rounded-full bg-red-500 shadow-lg shadow-red-400 transition-all duration-300 hover:-translate-y-2 hover:scale-110 hover:bg-red-600 hover:shadow-red-500"
         >
             <ShoppingCart strokeWidth={2.5} color={"white"} size={30} />
 

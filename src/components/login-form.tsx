@@ -45,7 +45,7 @@ function LoginForm({ onSwitchToSignup }: { onSwitchToSignup: () => void }) {
                                     Forgot your password?
                                 </a>
                             </div>
-                            <Input id="password" type="password" required />
+                            <Input  id="password" type="password" required />
                         </Field>
                         <Field>
                             <Button
@@ -126,6 +126,7 @@ function SignupForm({ onSwitchToLogin }: { onSwitchToLogin: () => void }) {
         <Card className="overflow-hidden p-0">
             <CardContent className="grid p-0 md:grid-cols-2">
                 <div className="bg-muted relative hidden md:block">
+
                     <video
                         src={introVideo2}
                         autoPlay

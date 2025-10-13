@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Route, Routes} from "react-router-dom";
 import Home from "./Pages/Home.jsx";
 import CarDetails from "@/Pages/CarDetails.jsx";
@@ -14,10 +14,20 @@ import Login from "@/Pages/LoginScreen.jsx";
 
 
 const App = () => {
+    const lenis = useLenis(({ scroll }) => {
+        // monitor scroll position if needed
+      })
+    
+      useEffect(() => {
+        function raf(time) {
+          lenis?.raf(time)
+          requestAnimationFrame(raf)
+        }
+        requestAnimationFrame(raf)
+      }, [lenis])
 
     return (
-        <>
-        <ReactLenis root />
+        <ReactLenis root options={{ smoothWheel: true, lerp: 0.1 }}>
             <ScrollToTop />
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -31,8 +41,8 @@ const App = () => {
 
                 <Route path="*" element={<NotFound />} />
             </Routes>
+        </ReactLenis>
 
-    </>
     )
 }
 export default App

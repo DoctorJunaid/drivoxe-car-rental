@@ -159,3 +159,29 @@ body{
     @apply bg-background text-foreground;
     }
 }
+/* hide scrollbar but keep scroll functionality */
+/* Remove overflow: hidden from here */
+html,
+body {
+    /* overflow: hidden;  <-- DELETE THIS LINE */
+}
+
+/* Lenis creates its own scroll container */
+.lenis.lenis-smooth {
+    height: 100vh;
+    overflow: hidden; /* This one is okay, it's for the Lenis container */
+}
+
+.lenis.lenis-smooth > .lenis-wrapper {
+    height: auto;
+    overflow: visible;
+}
+
+/* Your optional scrollbar styling (this is fine) */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 100, 100, 0.4);
+    border-radius: 10px;
+}
