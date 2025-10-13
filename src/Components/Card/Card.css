@@ -145,4 +145,24 @@
     .price-amount {
         font-size: 18px;
     }
+    .rent-button {
+        background-color: #ff4d4d;
+        color: white;
+        border: none;
+        border-radius: 24px;
+        padding: 10px 20px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        align-self: flex-start;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-wrap: nowrap;
+    }
+
+    .rent-button:hover {
+        background-color: #e64545;
+        transform: scale(1.02);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        text-wrap: nowrap;
+    }
 }
