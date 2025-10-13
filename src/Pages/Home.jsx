@@ -11,8 +11,6 @@ import appStoreBadge from "@/assets/App-store.webp";
 import googlePlayBadge from "@/assets/Google.webp";
 
 
-// A simple utility to get the base image URL
-
 const Home = () => {
 
 
@@ -63,8 +61,8 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-            } />
+                </div>}
+            />
             <ShoppingCartButton />
         </div>
     );
