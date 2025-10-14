@@ -42,4 +42,4 @@ const App = () => {
         </ReactLenis>
     )
 }
-export default <App></App>
+export default App;

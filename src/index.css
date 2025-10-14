@@ -166,7 +166,7 @@ html.lenis, html.lenis body {
 }
 
 .lenis.lenis-smooth {
-    scroll-behavior: auto !important;
+    scroll-behavior: smooth !important;
 }
 
 .lenis.lenis-smooth [data-lenis-prevent] {
@@ -183,7 +183,7 @@ html.lenis, html.lenis body {
 
 /* Custom scrollbar - always visible */
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 3px;
 }
 
 ::-webkit-scrollbar-track {
