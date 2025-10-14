@@ -25,6 +25,8 @@ function LoginForm({ onSwitchToSignup }: { onSwitchToSignup: () => void }) {
     const [emailLogin ,setEmailLogin] = useState<string>("")
     const [passwordLogin ,setPasswordLogin] = useState<string>("")
 
+    // login function
+
     const handleLogin = (e:any) => {
         e.preventDefault()
         const foundUser = registeredUsers.find((user:any) => user.email === emailLogin)
