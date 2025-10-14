@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
+@import 'lenis/dist/lenis.css';
 @import 'tailwindcss';
 @import "tw-animate-css";
 /* Add this to your main CSS file, like src/index.css */

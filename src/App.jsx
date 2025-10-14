@@ -17,12 +17,11 @@ const App = () => {
     return (
         <ReactLenis 
             root 
-            options={{ 
-                lerp: 0.05,
-                duration: 1.2,
-                smoothWheel: true,
-                smoothTouch: false,
-                wheelMultiplier: 1,
+            options={{
+                duration: 2.5,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smoothTouch: true,
+                wheelMultiplier: 1.5,
                 touchMultiplier: 2,
                 infinite: false,
             }}
