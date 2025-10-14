@@ -160,28 +160,53 @@ body{
     }
 }
 /* hide scrollbar but keep scroll functionality */
-/* Remove overflow: hidden from here */
-html,
-body {
-    /* overflow: hidden;  <-- DELETE THIS LINE */
-}
-
-/* Lenis creates its own scroll container */
-.lenis.lenis-smooth {
-    height: 100vh;
-    overflow: hidden; /* This one is okay, it's for the Lenis container */
-}
-
-.lenis.lenis-smooth > .lenis-wrapper {
+/* Lenis smooth scrolling container */
+html.lenis, html.lenis body {
     height: auto;
-    overflow: visible;
 }
 
-/* Your optional scrollbar styling (this is fine) */
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+/* Custom scrollbar - always visible */
 ::-webkit-scrollbar {
     width: 6px;
 }
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(100, 100, 100, 0.4);
+    background-color: rgba(100, 100, 100, 0.5);
     border-radius: 10px;
+    transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(100, 100, 100, 0.7);
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(100, 100, 100, 0.5) transparent;
+}
+
+/* Prevent scrollbar from causing layout shift */
+body {
+    overflow-y: scroll;
 }
