@@ -159,54 +159,8 @@ body{
     @apply bg-background text-foreground;
     }
 }
-/* hide scrollbar but keep scroll functionality */
-/* Lenis smooth scrolling container */
-html.lenis, html.lenis body {
-    height: auto;
-}
-
-.lenis.lenis-smooth {
-    scroll-behavior: smooth !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-    overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-    pointer-events: none;
-}
-
-/* Custom scrollbar - always visible */
-::-webkit-scrollbar {
-    width: 3px;
-}
-
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgba(100, 100, 100, 0.5);
-    border-radius: 10px;
-    transition: background-color 0.2s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(100, 100, 100, 0.7);
-}
-
-/* For Firefox */
-* {
+*{
     scrollbar-width: thin;
-    scrollbar-color: rgba(100, 100, 100, 0.5) transparent;
-}
 
-/* Prevent scrollbar from causing layout shift */
-body {
-    overflow-y: scroll;
+
 }
