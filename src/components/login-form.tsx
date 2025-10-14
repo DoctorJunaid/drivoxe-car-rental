@@ -2,8 +2,8 @@ import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import introVideo1 from "@/assets/bgIntroVideo.mp4_compressed.webm"
-import introVideo2 from "@/assets/bgintrovideo2.mp4_compressed.webm"
+import introVideo1 from "@/assets/bgIntroVideo.mp4_compressed.mp4"
+import introVideo2 from "@/assets/bgintrovideo2.mp4_compressed.mp4"
 import {
     Field,
     FieldDescription,
