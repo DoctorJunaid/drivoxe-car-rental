@@ -48,7 +48,7 @@ const Cars = () => {
                     <Link to="/" className="hover:text-red-500 transition-colors">HOME</Link> / CARS
                 </div>
             </div>
-            <h1 className={"text-5xl m-10   font-semibold text-center"}>Our Impressive Fleet</h1>
+            <h1  className={"text-5xl m-10   font-semibold text-center"}>Our Impressive Fleet</h1>
 
             <div className="w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[32/9] overflow-hidden">
                 <img
