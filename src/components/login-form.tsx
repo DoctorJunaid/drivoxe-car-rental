@@ -13,12 +13,12 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import {useDispatch, useSelector} from "react-redux";
-import {addUserInfo , setLoggedInUser} from "@/Redux/formSlice.js";
-import {useNavigate} from "react-router";
+import {addUserInfo, setLoggedInUser} from "@/Redux/userInfoSlice.js";
+import {useLocation, useNavigate} from "react-router";
 import {FaApple, FaGoogle} from "react-icons/fa";
 import {FaMeta} from "react-icons/fa6";
 
-function LoginForm({ onSwitchToSignup }: { onSwitchToSignup: () => void }) {
+function LoginForm({ onSwitchToSignup, redirectPath }: { onSwitchToSignup: () => void; redirectPath: string }) {
     const registeredUsers = useSelector((state:any)=> state.userInfo.userInfo)
     const navigate = useNavigate()
     const dispatch :any  = useDispatch()
@@ -26,14 +26,22 @@ function LoginForm({ onSwitchToSignup }: { onSwitchToSignup: () => void }) {
     const [passwordLogin ,setPasswordLogin] = useState<string>("")
 
     // login function
-
     const handleLogin = (e:any) => {
         e.preventDefault()
+        console.log('Login attempt with redirect path:', redirectPath); // Debug log
+
         const foundUser = registeredUsers.find((user:any) => user.email === emailLogin)
         if(foundUser){
             if(foundUser.password === passwordLogin){
-                dispatch(setLoggedInUser(foundUser))
-                navigate("/checkout")
+                console.log('Login successful, dispatching user and navigating to:', redirectPath); // Debug log
+                dispatch(setLoggedInUser(foundUser));
+
+                // Use setTimeout to ensure state is updated before navigation
+                setTimeout(() => {
+                    console.log('Navigating now to:', redirectPath); // Debug log
+                    navigate(redirectPath, { replace: true });
+                }, 0);
+
                 setEmailLogin("");
                 setPasswordLogin("");
                 e.target.reset();
@@ -315,6 +323,13 @@ export default function AuthForm({
                                      ...props
                                  }: React.ComponentProps<"div">) {
     const [isSignup, setIsSignup] = useState(false)
+    const location = useLocation()
+
+    // Capture the redirect path once at the top level and preserve it
+    const redirectPath = location.state?.from || "/";
+
+    console.log('AuthForm location state:', location.state); // Debug log
+    console.log('Captured redirect path:', redirectPath); // Debug log
 
     const handleSwitchToSignup = () => setIsSignup(true)
     const handleSwitchToLogin = () => setIsSignup(false)
@@ -332,7 +347,7 @@ export default function AuthForm({
                         pointerEvents: !isSignup ? 'auto' : 'none'
                     }}
                 >
-                    <LoginForm onSwitchToSignup={handleSwitchToSignup} />
+                    <LoginForm onSwitchToSignup={handleSwitchToSignup} redirectPath={redirectPath} />
                 </div>
                 <div
                     className="transition-all duration-500 ease-in-out"

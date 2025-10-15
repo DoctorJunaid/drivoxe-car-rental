@@ -62,9 +62,9 @@ const Navbar = () => {
                 <div className="h-6 w-[3px] bg-[#FD3B3B]" />
                 <Link
                     className="px-6 py-2 bg-[#FD3B3B] border-2 border-transparent rounded-full text-white hover:bg-white hover:text-[#FD3B3B] hover:border-[#FD3B3B] transform hover:-translate-y-0.5 transition-all duration-300"
-                    to="/signup"
+                    to="/login"
                 >
-                    Sign up
+                    LOGIN
                 </Link>
             </div>
 
@@ -92,7 +92,7 @@ const Navbar = () => {
                 <div className="flex flex-col items-center gap-5 pb-8 px-5">
                     <Link onClick={closeMobileMenu} className="font-medium text-[#FD3B3B]" to="/contact">Contact</Link>
                     <div className="h-6 w-[3px] bg-[#FD3B3B]" />
-                    <Link onClick={closeMobileMenu} className="w-full text-center px-6 py-2 bg-[#FD3B3B] border-2 border-transparent rounded-full text-white" to="/signup">Sign up</Link>
+                    <Link onClick={closeMobileMenu} className="w-full text-center px-6 py-2 bg-[#FD3B3B] border-2 border-transparent rounded-full text-white" to="/login">Login</Link>
                 </div>
             </div>
         </nav>

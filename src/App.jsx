@@ -11,6 +11,10 @@ import About from "@/Pages/About.jsx";
 import NotFound from "@/Pages/NotFound.jsx";
 import { ReactLenis } from 'lenis/react'
 import Login from "@/Pages/LoginScreen.jsx";
+import Profile from "@/Pages/Profile.jsx";
+import Checkout from "@/Pages/Checkout.jsx";
+import PrivateRoutes from "@/Routes/privateRoutes.jsx";
+import PublicRoutes from "@/Routes/PublicRoutes.jsx";
 
 
 const App = () => {
@@ -31,11 +35,30 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/cars" element={<Cars />} />
                 <Route path={`cars/:id`} element={<CarDetails />} />
-                <Route path="/cart" element={<CartPage />} />
                 <Route path="/faqs" element={<Faqs />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/signup" element={<Login />} />
                 <Route path="/contact" element={<ContactPage />} />
+                <Route path="/login" element={
+                    <PublicRoutes>
+                    <Login />
+                    </PublicRoutes>
+                } />
+
+                <Route path="/cart" element={
+                    <PrivateRoutes>
+                    <CartPage />
+                    </PrivateRoutes>
+                } />
+                <Route path="/profile" element={
+                    <PrivateRoutes>
+                    <Profile />
+                    </PrivateRoutes>
+                } />
+                <Route path="/checkout" element={
+                    <PrivateRoutes>
+                        <Checkout />
+                    </PrivateRoutes>
+                } />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </ReactLenis>

@@ -21,10 +21,14 @@ const userInfoSlice = createSlice(
             logoutUser: (state) => {
                 state.currentUser = null;
             },
+
         }
 
 
     })
 export default userInfoSlice.reducer
-export const {addUserInfo} = userInfoSlice.actions
-export const {setLoggedInUser, logoutUser} = userInfoSlice.actions
+export const {
+    addUserInfo,
+    setLoggedInUser,
+    logoutUser
+} = userInfoSlice.actions
