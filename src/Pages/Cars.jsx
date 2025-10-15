@@ -52,6 +52,9 @@ const Cars = () => {
 
             <div className="w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[32/9] overflow-hidden">
                 <img
+                    loading={"eager"}
+                    decoding={"async"}
+                    fetchPriority={"high"}
                     src={carHero}
                     alt="carImage"
                     className="w-full h-full object-cover object-center"
