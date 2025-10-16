@@ -21,6 +21,7 @@ const BuySection = () => {
     const [initialScrollPosition, setInitialScrollPosition] = useState(null);
 
 
+
         const cars = useSelector((state)=> state.car.cars);
 
     const handleRentClick = (id) => {

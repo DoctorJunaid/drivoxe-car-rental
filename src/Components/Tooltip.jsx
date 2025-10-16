@@ -14,13 +14,15 @@ const people = [
         designation: "Software Engineer",
         image:
             faizanImg,
+        link : "https://www.instagram.com/faiz_ankhan9764/",
     },
     {
         id: 2,
         name: "Muhammad Osama",
         designation: "Certified Kubernetes Application Developer | Staff Software Engineer",
         image:
-            usamaImg
+            usamaImg,
+        link : "https://www.linkedin.com/in/xamqrexii/",
     },
     {
         id: 3,
@@ -28,6 +30,7 @@ const people = [
         designation: "Unemployed",
         image:
             haseebImg,
+        link : "/",
     },
     {
         id: 4,
@@ -35,6 +38,7 @@ const people = [
         designation: "Video Editor",
         image:
             abdulImg,
+        link : "/",
     }
 
 ];

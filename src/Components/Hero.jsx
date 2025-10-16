@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Tooltip from "@/Components/Tooltip.jsx";
 import { FaArrowRightLong } from "react-icons/fa6";
+import {Link, NavLink} from "react-router-dom";
 
 const getImageUrl = () => new URL('../assets/hero-img.png', import.meta.url).href;
 
@@ -14,13 +15,13 @@ const Hero = () => {
             setIsMobile(window.innerWidth < 768);
         };
         window.addEventListener('resize', handleResize);
-        // Cleanup the event listener on component unmount
+
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     return (
         <div>
-            {/* Main container is now a positioning context */}
+
             <div className="relative min-h-screen w-full">
 
                 {/* 1. Background Layer with Conditional Blur */}
@@ -45,6 +46,7 @@ const Hero = () => {
                         <p className={`mt-4 ${isMobile ? 'text-gray-200' : 'text-gray-800'}`}>
                             Experience the ultimate freedom of choice with GoCar - tailor your adventure by choosing from our premium fleet of vehicles.
                         </p>
+                        <NavLink to={"/login"}>
                         <button
                             className={
                                 `mt-8 w-[150px] rounded-full border-2 border-transparent
@@ -55,8 +57,11 @@ const Hero = () => {
                             }
                             style={{ animation: 'pulse-dramatic 3s infinite' }}
                         >
+
                             Get Started
+
                         </button>
+                        </NavLink>
                     </div>
 
                     {/* --- RIGHT SECTION --- */}
@@ -74,13 +79,31 @@ const Hero = () => {
                         </div>
                         <div className={"flex flex-wrap items-center justify-center gap-3 mt-10"}>
                             {/* ... Your four buttons ... */}
-                            <button className={`px-6 border-2 border-[#FD3B3B] py-3 text-xl text-[#FD3B3B] rounded-full hover:bg-[#FD3B3B] hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white hover:cursor-pointer  ${!isMobile ? 'bg-white/70' : 'bg-[#F5F5F5]'}`}>Rent</button>
-                            <button className={`px-7 border-2 border-[#FD3B3B] py-3 text-xl text-[#FD3B3B] rounded-full hover:bg-[#FD3B3B] hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white hover:cursor-pointer ${!isMobile ? 'bg-white/70' : 'bg-[#F5F5F5]'}`}>Buy</button>
-                            <button className={`px-8 border-2 border-[#FD3B3B] py-3 text-xl text-[#FD3B3B] rounded-full hover:bg-[#FD3B3B] hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white hover:cursor-pointer ${!isMobile ? 'bg-white/70' : 'bg-[#F5F5F5]'}`}>Sell</button>
-                            <button className={`px-5 border-2 border-[#FD3B3B] py-3 text-xl text-[#FD3B3B] rounded-full hover:bg-[#FD3B3B] hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white hover:cursor-pointer ${!isMobile ? 'bg-white/70' : 'bg-[#F5F5F5]'}`}>Consult</button>
+                                <NavLink to={"/cars"}>
+                            <button className={`px-6 border-2 border-[#FD3B3B] py-3 text-xl text-[#FD3B3B] rounded-full hover:bg-[#FD3B3B] hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white hover:cursor-pointer  ${!isMobile ? 'bg-white/70' : 'bg-[#F5F5F5]'}`}>
+                                Rent
+                            </button>
+                                    </NavLink>
+                                <NavLink to={"/cars"}>
+                            <button className={`px-7 border-2 border-[#FD3B3B] py-3 text-xl text-[#FD3B3B] rounded-full hover:bg-[#FD3B3B] hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white hover:cursor-pointer ${!isMobile ? 'bg-white/70' : 'bg-[#F5F5F5]'}`}>
+                                    Buy
+                                </button>
+                                </NavLink>
+                                <NavLink to={"/cars"}>
+                            <button className={`px-8 border-2 border-[#FD3B3B] py-3 text-xl text-[#FD3B3B] rounded-full hover:bg-[#FD3B3B] hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white hover:cursor-pointer ${!isMobile ? 'bg-white/70' : 'bg-[#F5F5F5]'}`}>
+                                    Sell
+                                </button>
+                                </NavLink>
+                                <NavLink to={"/contact"}>
+                            <button className={`px-5 border-2 border-[#FD3B3B] py-3 text-xl text-[#FD3B3B] rounded-full hover:bg-[#FD3B3B] hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white hover:cursor-pointer ${!isMobile ? 'bg-white/70' : 'bg-[#F5F5F5]'}`}>
+                                    Consult
+                            </button>
+                                </NavLink>
                         </div>
                         <div className={`flex gap-3 text-2xl items-center justify-center mt-10 transition-all duration-300 hover:text-[#FD3B3B] hover:gap-5 hover:cursor-pointer ${isMobile ? 'text-gray-200' : 'text-gray-800'}`}>
-                            Learn more <FaArrowRightLong />
+                            <NavLink to={"/about"}>
+                                Learn more <FaArrowRightLong />
+                            </NavLink>
                         </div>
                     </div>
                 </div>

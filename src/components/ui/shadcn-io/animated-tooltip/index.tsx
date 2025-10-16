@@ -14,6 +14,7 @@ export type AnimatedTooltipItem = {
   name: string;
   designation: string;
   image: string;
+  link? : string;
 };
 
 export type AnimatedTooltipProps = {
@@ -86,6 +87,7 @@ export const AnimatedTooltip = ({ items }: AnimatedTooltipProps) => {
               </motion.div>
             )}
           </AnimatePresence>
+            <a href={item.link} target={"_blank"} >
           <img
             onMouseMove={handleMouseMove}
             height={200}
@@ -94,6 +96,7 @@ export const AnimatedTooltip = ({ items }: AnimatedTooltipProps) => {
             alt={item.name}
             className="relative !m-0 h-18 w-18 rounded-full border-2 border-white object-cover object-top !p-0 transition duration-500 group-hover:z-30 group-hover:scale-105"
           />
+            </a>
         </div>
       ))}
     </>

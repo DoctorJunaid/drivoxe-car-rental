@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from "@/Components/Navbar.jsx";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import aboutHero from "@/assets/aboutHero.webp";
 import Footer from "@/Components/Footer.jsx";
 import  aboutFooter from "@/assets/aboutFooter.webp";
@@ -31,6 +31,7 @@ const About = () => {
 
                 <div className="relative w-full lg:w-[55%] flex flex-col items-start">
 
+                    <NavLink to={"/cars"}>
                     <div className="flex items-center gap-3 mb-4 sm:mb-6">
                         <div className="flex items-center justify-center h-10 w-10 bg-red-500 rounded-full cursor-pointer hover:scale-110 transition-transform duration-300">
                             <MoveRight size={20} className="text-white" />
@@ -39,6 +40,7 @@ const About = () => {
                             PICK THE CAR!
                         </h3>
                     </div>
+                        </NavLink>
 
 
                     <div className="w-full">
