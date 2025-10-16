@@ -8,12 +8,13 @@ import {Link} from "react-router-dom";
 import Cart from "@/Components/Cart.jsx";
 import {addToCart} from "@/Redux/cartSlice.js";
 import carDetailsFooter from "@/assets/carDetailsFooter.webp";
-
+import {toast} from "react-toastify";
 const CarDetails = () => {
     const dispatch = useDispatch()
     const { id } = useParams();
     const cars = useSelector((state) => state.car.cars);
     const navigate = useNavigate();
+    const currentUser  = useSelector((state)=> state.userInfo.currentUser)
 
     const car = cars.find(e => e.id === parseInt(id));
     if (!car) {
@@ -29,14 +30,42 @@ const CarDetails = () => {
         return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     };
     const rentCar = (e) => {
-        dispatch(addToCart(car));
+        if(!currentUser || !currentUser.email) {
+           toast.error("please log in first")
+            return ;
+
+        }
+        dispatch(
+            addToCart({
+                userEmail: currentUser.email, 
+                item: {
+                    ...car,
+                    purchaseType: "rent",
+                    rentalDays: 1,
+                    rentPerDay: car.price
+                }
+            }),
+        );
         navigate('/cart')
     }
     const buyCar = (e) => {
-        dispatch(addToCart(car));
+        if(!currentUser || !currentUser.email) {
+            toast.error("please log in first")
+            return ;
+
+        }
+        dispatch(
+            addToCart({
+                userEmail: currentUser.email, 
+                item: {
+                    ...car,
+                    purchaseType: "buy",
+                    quantity: 1,
+                    carPrice: car.carPrice || car.price * 30 // Assuming car price is 30x daily rate if not set
+                }
+            }),
+        );
         navigate('/cart')
-
-
     }
     return (
         <div className="min-h-screen bg-white">

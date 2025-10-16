@@ -7,8 +7,16 @@ const ShoppingCartButton = ({  onClick }) => {
     const onClickHandler = () => {
         navigate("/cart")
     }
-    const {cart} = useSelector((state)=> state.cart)
+    const currentUser = useSelector((state)=> state.userInfo?.currentUser) || null;
+    if(!currentUser){
+        return ;
+    }
+    const cart = useSelector((state)=> state.cart.carts[currentUser.email])
+
     const itemCount = cart?.length || 0;
+
+
+
 
     return (
 

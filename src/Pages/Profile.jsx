@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { User, ShoppingBag, Settings, Lock, MapPin, CreditCard, Bell, ChevronLeft, Search, Edit2, Trash2, Plus, Menu, X, Save, X as XIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Navbar from "@/Components/Navbar.jsx";
+import Footer from "@/Components/Footer.jsx";
+import footerImage from "@/assets/carPagefoooter.webp";
 
 // Demo user data
 const demoUserData = {
@@ -739,34 +742,7 @@ export default function Profile() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
             {/* Header */}
-            <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                    <div className="flex items-center justify-between">
-                        <h1 className="text-2xl font-bold text-gray-900">DRIVOXE</h1>
-                        <div className="flex items-center gap-3">
-                            <div className="hidden sm:flex items-center gap-3 px-4 py-2 bg-gray-50 rounded-xl">
-                                {userData.avatar && (
-                                    <img
-                                        src={userData.avatar}
-                                        alt={userData.name || 'User'}
-                                        className="w-8 h-8 rounded-full object-cover"
-                                        onError={(e) => {
-                                            e.currentTarget.src = 'https://via.placeholder.com/200x200/cccccc/999999?text=USER';
-                                        }}
-                                    />
-                                )}
-                                <span className="font-semibold text-sm text-gray-900">{userData.name || 'User'}</span>
-                            </div>
-                            <button
-                                className="p-2 hover:bg-gray-100 rounded-lg transition-colors lg:hidden"
-                                onClick={toggleMobileMenu}
-                            >
-                                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </header>
+            <Navbar />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -1170,6 +1146,39 @@ export default function Profile() {
                     animation: fadeIn 0.4s ease-out;
                 }
             `}</style>
+            <Footer children={
+                <div className="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-[24px] sm:rounded-[32px] lg:rounded-[40px] overflow-hidden mb-8 lg:mb-12">
+                    <div className="relative w-full min-h-[280px] sm:min-h-[320px] lg:min-h-[350px]">
+                        {/* Car Image - Full Width Background */}
+                        <div className="absolute inset-0 w-full h-full ">
+                            <img
+                                src={footerImage}
+                                alt="Red Sports Car"
+                                className="w-full h-full object-cover object-center"
+                                style={{ objectPosition: '60% center' }}
+                            />
+                            <div className="absolute inset-0 bg-black opacity-60"></div>
+
+
+                        </div>
+
+                        {/* Content Overlay - Top Right */}
+                        <div className="relative z-20 flex justify-end items-start h-full">
+                            <div className="w-full sm:w-[55%] lg:w-[50%] px-6 py-8 sm:py-10 lg:px-12 lg:py-16">
+                                <p className="text-sm sm:text-base lg:text-lg text-gray-300 mb-6 lg:mb-8 leading-relaxed text-right">
+                                    Find Your Perfect Ride
+                                </p>
+                                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 lg:mb-4 justify-end">
+                                    Explore Our Fleet and Book Your Dream Car Today!
+                                </h1>
+                                <div className="flex flex-wrap gap-3 lg:gap-4 justify-end">
+                                    <button className={"bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full hover:scale-110 cursor-pointer hover:brightness-110 transition-all duration-300 "}>Let’s Drive with Us</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            } />
         </div>
     );
 }

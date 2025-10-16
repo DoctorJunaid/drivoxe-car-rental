@@ -3,12 +3,14 @@ import React, { useState } from 'react';
 import './Card.css';
 import {useDispatch, useSelector} from "react-redux";
 import {addToCart} from "@/Redux/cartSlice.js";
+import {toast} from "react-toastify";
 
 
 const Card = ({ car, isSelected = false, onRentClick }) => {
     const [isHovered, setIsHovered] = useState(false);
     const dispatch = useDispatch();
     const data = useSelector((state)=> state.cart)
+    const currentUser  = useSelector((state)=> state.userInfo.currentUser)
 
     return (
         <div
@@ -35,9 +37,14 @@ const Card = ({ car, isSelected = false, onRentClick }) => {
                     <button
                     className="rent-button"
                     onClick={(e) => {
-                        e.stopPropagation(); // Prevent triggering card click
+                        e.stopPropagation();
+                        if(!currentUser) {
+                            toast.error("please log in first")
+                            return ;
+
+                        }
                         dispatch(
-                            addToCart(car),
+                            addToCart({userEmail : currentUser.email , item : car}),
                         );
                     }}
                 >

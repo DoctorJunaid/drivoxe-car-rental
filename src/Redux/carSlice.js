@@ -411,7 +411,7 @@ const initialState = {
         }
     ],
 
-    selectedCarIs : null
+    selectedCarId : null
 }
 const carSlice = createSlice({
     name: "car",

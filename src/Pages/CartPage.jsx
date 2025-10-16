@@ -1,4 +1,4 @@
-    import React, { useState } from "react";
+    import React, {useEffect, useState} from "react";
     import {Trash2, Plus, Minus, ShoppingBag, ArrowLeft, CreditCard, Tag, Truck, Calendar,Package,} from "lucide-react";
     import { useSelector, useDispatch } from "react-redux";
     import {Link} from "react-router-dom";
@@ -7,8 +7,10 @@
     import { removeFromCart } from "@/Redux/cartSlice.js";
     
     const CartPage = () => {
-        const { cart } = useSelector((state) => state.cart);
+        const currentUser = useSelector((state)=> state.userInfo.currentUser)
+        const  carts  = useSelector((state) => state.cart.carts);
         const dispatch = useDispatch();
+        const cart = carts[currentUser?.email] || [];
     
         const [promoCode, setPromoCode] = useState("");
         const [appliedPromo, setAppliedPromo] = useState(false);
@@ -22,7 +24,19 @@
                 rentPerDay: item.price || 0,
             }))
         );
-    
+        useEffect(() => {
+            setCartItems(
+                (carts[currentUser?.email] || []).map((item) => ({
+                    ...item,
+                    quantity: item.quantity || 1,
+                    rentalDays: item.rentalDays || 1,
+                    purchaseType: item.purchaseType || null,
+                    rentPerDay: item.price || 0,
+                }))
+            );
+        }, [carts, currentUser]);
+
+
         const calculateItemTotal = (item) => {
             if (item.purchaseType === "buy") {
                 return item.carPrice * item.quantity;
@@ -70,11 +84,11 @@
                 )
             );
         };
-    
+
         const removeItem = (id) => {
-            dispatch(removeFromCart(id));
+            if (!currentUser?.email) return;
+            dispatch(removeFromCart({ userEmail: currentUser.email, itemId: id }));
             setCartItems(cartItems.filter((item) => item.id !== id));
-    
         };
     
         const applyPromoCode = () => {

@@ -15,6 +15,8 @@ import Profile from "@/Pages/Profile.jsx";
 import Checkout from "@/Pages/Checkout.jsx";
 import PrivateRoutes from "@/Routes/privateRoutes.jsx";
 import PublicRoutes from "@/Routes/PublicRoutes.jsx";
+import {ToastContainer, Zoom} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const App = () => {
@@ -61,6 +63,20 @@ const App = () => {
                 } />
                 <Route path="*" element={<NotFound />} />
             </Routes>
+            <ToastContainer
+                position="top-center"
+                autoClose={1000}
+                limit={3}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Zoom}
+            />
         </ReactLenis>
     )
 }

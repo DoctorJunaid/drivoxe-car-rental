@@ -1,7 +1,13 @@
 import {createSlice} from "@reduxjs/toolkit";
+const userDataInStorage =JSON.parse(localStorage.getItem('userData')) || {};
+
+function  saveToLocalStorage(state){
+    localStorage.setItem("userData" , JSON.stringify(state));
+}
+
 const initialState = {
-    userInfo : [],
-    currentUser: null,
+    userInfo : userDataInStorage.userInfo || [],
+    currentUser: userDataInStorage.currentUser || null,
 }
 const userInfoSlice = createSlice(
     {name : 'userInfo',
@@ -14,12 +20,16 @@ const userInfoSlice = createSlice(
                   return;
               }
               state.userInfo.push(newUserInfo);
+              saveToLocalStorage(state)
+
             },
             setLoggedInUser: (state, action) => {
                 state.currentUser = action.payload;
+                saveToLocalStorage(state)
             },
             logoutUser: (state) => {
                 state.currentUser = null;
+                saveToLocalStorage(state)
             },
 
         }
