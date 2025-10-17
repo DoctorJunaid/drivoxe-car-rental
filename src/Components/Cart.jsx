@@ -3,21 +3,24 @@ import {useNavigate} from "react-router";
 import {useSelector} from "react-redux";
 
 const ShoppingCartButton = ({  onClick }) => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const currentUser = useSelector((state) => state.userInfo?.currentUser);
+    const carts = useSelector((state) => state.cart.carts);
+
+    const cart = currentUser ? carts[currentUser.email] || [] : [];
+    const itemCount = cart.length;
+
+    if(!currentUser){
+        return null;
+    }
+
+
+
+
+
     const onClickHandler = () => {
         navigate("/cart")
     }
-    const currentUser = useSelector((state)=> state.userInfo?.currentUser) || null;
-    if(!currentUser){
-        return ;
-    }
-    const cart = useSelector((state)=> state.cart.carts[currentUser.email])
-
-    const itemCount = cart?.length || 0;
-
-
-
-
     return (
 
 

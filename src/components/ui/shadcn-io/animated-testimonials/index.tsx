@@ -52,7 +52,7 @@
         <div className={cn(" mx-auto max-w-sm px-9 py-20 font-sans antialiased md:max-w-9/12 md:px-8 lg:px-12", className)}>
           <div className="relative grid grid-cols-1 gap-10 md:gap-40 md:grid-cols-2">
             <div>
-              <div className="relative aspect-[4/3]  w-full">
+              <div className="relative aspect-[4/4]  w-full">
                 <AnimatePresence>
                   {testimonials.map((testimonial, index) => (
                     <motion.div
@@ -94,7 +94,7 @@
                         width={500}
                         height={500}
                         draggable={false}
-                        className=" h-full w-full rounded-3xl object-cover object-center"
+                        className=" h-full w-full  rounded-3xl object-cover object-center"
                       />
                     </motion.div>
                   ))}

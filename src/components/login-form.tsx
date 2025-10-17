@@ -17,6 +17,7 @@ import {addUserInfo, setLoggedInUser} from "@/Redux/userInfoSlice.js";
 import {useLocation, useNavigate} from "react-router";
 import {FaApple, FaGoogle} from "react-icons/fa";
 import {FaMeta} from "react-icons/fa6";
+import {toast} from "react-toastify";
 
 function LoginForm({ onSwitchToSignup, redirectPath }: { onSwitchToSignup: () => void; redirectPath: string }) {
     const registeredUsers = useSelector((state:any)=> state.userInfo.userInfo)
@@ -35,7 +36,7 @@ function LoginForm({ onSwitchToSignup, redirectPath }: { onSwitchToSignup: () =>
             if(foundUser.password === passwordLogin){
                 console.log('Login successful, dispatching user and navigating to:', redirectPath); // Debug log
                 dispatch(setLoggedInUser(foundUser));
-
+                toast.info(`welcome ${foundUser.name}`)
                 // Use setTimeout to ensure state is updated before navigation
                 setTimeout(() => {
                     console.log('Navigating now to:', redirectPath); // Debug log
@@ -46,7 +47,7 @@ function LoginForm({ onSwitchToSignup, redirectPath }: { onSwitchToSignup: () =>
                 setPasswordLogin("");
                 e.target.reset();
             } else{
-                alert("Wrong password")
+                toast.error("wrong Password")
                 setPasswordLogin("");
                 e.target.reset();
             }
@@ -54,7 +55,7 @@ function LoginForm({ onSwitchToSignup, redirectPath }: { onSwitchToSignup: () =>
             setEmailLogin("");
             setPasswordLogin("");
             e.target.reset();
-            alert("User not found! Please register")
+            toast.info("User not found! Please register")
         }
     }
 
@@ -177,17 +178,17 @@ function SignupForm({ onSwitchToLogin }: { onSwitchToLogin: () => void }) {
     const registeringHandler = (e:any) =>{
         e.preventDefault()
         if(registeringPassword !== registeringConfirmPassword){
-            alert("Passwords do not match")
+            toast.error("Passwords do not match")
         } else {
             if (registeredUsers.some((user:any) => user.email === registeringEmail)) {
-                alert("Email already exists");
+               toast.info("User already exists! Please login")
             } else {
                 dispatch(addUserInfo({
                     name: registeringName,
                     email: registeringEmail,
                     password: registeringPassword,
                 }))
-                alert("Registration successful! You can now log in.");
+                toast.success("User registered successfully!")
                 setRegisteringName('');
                 setRegisteringEmail('');
                 setRegisteringPassword('');

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import  React, {useEffect, useRef, useState} from 'react';
 import {ToastContainer, Zoom} from "react-toastify";
 import Navbar from "@/Components/Navbar.jsx";
 import Cart from "@/Components/Cart.jsx";
@@ -164,20 +164,7 @@ const Cars = () => {
                     Next
                 </button>
             </div>
-            <ToastContainer
-                position="top-center"
-                autoClose={1000}
-                limit={3}
-                hideProgressBar={false}
-                newestOnTop
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss={false}
-                draggable
-                pauseOnHover
-                theme="light"
-                transition={Zoom}
-            />
+
             <Cart />
             <Footer children={
                 <div className="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-[24px] sm:rounded-[32px] lg:rounded-[40px] overflow-hidden mb-8 lg:mb-12">

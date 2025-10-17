@@ -1,5 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {toast} from "react-toastify";
+import {Navigate} from "react-router-dom";
 const userDataInStorage =JSON.parse(localStorage.getItem('userData')) || {};
+
+
+
+
 
 function  saveToLocalStorage(state){
     localStorage.setItem("userData" , JSON.stringify(state));
@@ -29,7 +35,12 @@ const userInfoSlice = createSlice(
             },
             logoutUser: (state) => {
                 state.currentUser = null;
-                saveToLocalStorage(state)
+                saveToLocalStorage({
+                        userInfo: state.userInfo,
+                        currentUser : null,
+                });
+
+                toast.info("successfully Logout")
             },
 
         }

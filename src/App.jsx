@@ -74,7 +74,7 @@ const App = () => {
                 pauseOnFocusLoss={false}
                 draggable
                 pauseOnHover
-                theme="light"
+                theme="colored"
                 transition={Zoom}
             />
         </ReactLenis>
