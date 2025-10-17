@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Tooltip from "@/Components/Tooltip.jsx";
 import { FaArrowRightLong } from "react-icons/fa6";
 import {Link, NavLink} from "react-router-dom";
@@ -6,101 +6,216 @@ import {Link, NavLink} from "react-router-dom";
 const getImageUrl = () => new URL('../assets/hero-img.png', import.meta.url).href;
 
 const Hero = () => {
-    // State to track if the screen is mobile-sized
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const leftRef = useRef(null);
+    const rightRef = useRef(null);
+    const [leftHover, setLeftHover] = useState(false);
+    const [rightHover, setRightHover] = useState(false);
 
-    // Effect to update the state when the window is resized
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth < 768);
         };
         window.addEventListener('resize', handleResize);
-
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    const handleMouseMove = (e, section) => {
+        if (isMobile) return;
+
+        const rect = section === 'left'
+            ? leftRef.current?.getBoundingClientRect()
+            : rightRef.current?.getBoundingClientRect();
+
+        if (!rect) return;
+
+        const x = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+        const y = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+
+        if (section === 'left') {
+            leftRef.current.style.transform = `perspective(1000px) rotateX(${y * -15}deg) rotateY(${x * 15}deg) translateZ(30px) scale(1.02)`;
+        } else {
+            rightRef.current.style.transform = `perspective(1000px) rotateX(${y * -12}deg) rotateY(${x * 12}deg) translateZ(20px) scale(1.01)`;
+        }
+    };
+
+    const handleMouseLeave = (section) => {
+        if (section === 'left' && leftRef.current) {
+            leftRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)';
+        } else if (section === 'right' && rightRef.current) {
+            rightRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)';
+        }
+    };
+
     return (
         <div>
-
             <div className="relative min-h-screen w-full">
-
-                {/* 1. Background Layer with Conditional Blur */}
                 <div
                     className={`absolute inset-0 bg-cover bg-center ${isMobile ? 'blur-sm' : ''}`}
                     style={{ backgroundImage: `url(${getImageUrl()})` }}
                 />
 
-                {/* 2. Content Layer (sits on top of the background) */}
-
-                <div className={`relative z-10 flex min-h-screen w-full flex-col items-center justify-center gap-12 p-6 pt-10 md:flex-row md:justify-between md:px-20 ${isMobile ? 'bg-black/30' : ''}`}>
-
-                    {/* --- LEFT SECTION --- */}
-                    <div id={"left"}
-                         className={`flex flex-col w-full max-w-md md:max-w-[300px] text-center md:text-left items-center md:items-start
-                                    transition-all duration-300
-                                    ${!isMobile ? 'bg-white/20 backdrop-blur-sm rounded-xl p-6' : ''}`}
+                <div
+                    id="hero-container"
+                    className={`relative z-10 flex min-h-screen w-full flex-col items-center justify-center gap-12 p-6 pt-10 md:flex-row md:justify-between md:px-20 ${isMobile ? 'bg-black/30' : ''}`}
+                >
+                    {/* LEFT SECTION */}
+                    <div
+                        ref={leftRef}
+                        id="left"
+                        className={`flex flex-col w-full max-w-md md:max-w-[300px] text-center md:text-left items-center md:items-start ${!isMobile ? 'bg-white/20 backdrop-blur-sm rounded-xl p-6' : ''}`}
+                        onMouseMove={(e) => handleMouseMove(e, 'left')}
+                        onMouseLeave={() => handleMouseLeave('left')}
+                        onMouseEnter={() => setLeftHover(true)}
+                        onMouseLeave={() => {
+                            handleMouseLeave('left');
+                            setLeftHover(false);
+                        }}
+                        style={{
+                            transition: 'transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease',
+                            transformStyle: 'preserve-3d',
+                            boxShadow: !isMobile && leftHover ? '0 30px 60px rgba(0,0,0,0.3)' : 'none'
+                        }}
                     >
-                        <h1 className={`text-3xl sm:text-4xl font-bold leading-relaxed tracking-tight ${isMobile ? 'text-white' : 'text-black'}`}>
-                            Your Journey, Your Car, Your Way
-                        </h1>
-                        <p className={`mt-4 ${isMobile ? 'text-gray-200' : 'text-gray-800'}`}>
-                            Experience the ultimate freedom of choice with GoCar - tailor your adventure by choosing from our premium fleet of vehicles.
-                        </p>
+                        <div style={{ transformStyle: 'preserve-3d' }}>
+                            <h1
+                                className={`text-3xl sm:text-4xl font-bold leading-relaxed tracking-tight ${isMobile ? 'text-white' : 'text-black'}`}
+                                style={{
+                                    transform: !isMobile ? 'translateZ(50px)' : 'none',
+                                    textShadow: !isMobile && leftHover ? '0 20px 40px rgba(0,0,0,0.2)' : 'none',
+                                }}
+                            >
+                                Your Journey, Your Car, Your Way
+                            </h1>
+                            <p
+                                className={`mt-4 ${isMobile ? 'text-gray-200' : 'text-gray-800'}`}
+                                style={{
+                                    transform: !isMobile ? 'translateZ(25px)' : 'none',
+                                }}
+                            >
+                                Experience the ultimate freedom of choice with GoCar - tailor your adventure by choosing from our premium fleet of vehicles.
+                            </p>
+                        </div>
+
                         <NavLink to={"/login"}>
-                        <button
-                            className={
-                                `mt-8 w-[150px] rounded-full border-2 border-transparent
-                                bg-[#FD3B3B] px-4 py-2 text-white
-                                transition-all duration-300 transform
-                                hover:-translate-y-0.5 hover:border-[#FD3B3B] hover:bg-white hover:text-[#FD3B3B]
-                                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#FD3B3B] hover:cursor-pointer`
-                            }
-                            style={{ animation: 'pulse-dramatic 3s infinite' }}
-                        >
-
-                            Get Started
-
-                        </button>
+                            <button
+                                className={`mt-8 w-[150px] rounded-full border-2 border-transparent bg-[#FD3B3B] px-4 py-2 text-white transition-all duration-300 transform hover:-translate-y-0.5 hover:border-[#FD3B3B] hover:bg-white hover:text-[#FD3B3B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#FD3B3B] hover:cursor-pointer`}
+                                style={{
+                                    animation: 'pulse-dramatic 3s infinite',
+                                    transform: !isMobile ? 'translateZ(60px)' : 'none',
+                                    boxShadow: !isMobile && leftHover ? '0 25px 50px rgba(253, 59, 59, 0.4)' : 'none'
+                                }}
+                            >
+                                Get Started
+                            </button>
                         </NavLink>
                     </div>
 
-                    {/* --- RIGHT SECTION --- */}
-                    <div id={"right"} className={"flex flex-col w-full max-w-sm md:w-auto items-center text-center"}>
-                        <div className={`flex flex-col items-center justify-center 
-                                        ${!isMobile ? 'bg-white/20 backdrop-blur-sm rounded-xl p-4' : ''}`}
+                    {/* RIGHT SECTION */}
+                    <div
+                        ref={rightRef}
+                        id="right"
+                        className="flex flex-col w-full max-w-sm md:w-auto items-center text-center"
+                        onMouseMove={(e) => handleMouseMove(e, 'right')}
+                        onMouseEnter={() => setRightHover(true)}
+                        onMouseLeave={() => {
+                            handleMouseLeave('right');
+                            setRightHover(false);
+                        }}
+                        style={{
+                            transition: 'transform 0.2s cubic-bezier(0.23, 1, 0.32, 1)',
+                            transformStyle: 'preserve-3d',
+                        }}
+                    >
+                        <div
+                            className={`flex flex-col items-center justify-center ${!isMobile ? 'bg-white/20 backdrop-blur-sm rounded-xl p-4' : ''}`}
+                            style={{
+                                transform: !isMobile ? 'translateZ(30px)' : 'none',
+                                boxShadow: !isMobile && rightHover ? '0 20px 40px rgba(0,0,0,0.2)' : 'none',
+                                transition: 'box-shadow 0.3s ease'
+                            }}
                         >
-                            <Tooltip />
-                            <h3 className={`text-3xl font-semibold ${isMobile ? 'text-white' : 'text-black'}`}>
+                            <div style={{ transform: !isMobile ? 'translateZ(20px)' : 'none' }}>
+                                <Tooltip />
+                            </div>
+                            <h3
+                                className={`text-3xl font-semibold ${isMobile ? 'text-white' : 'text-black'}`}
+                                style={{
+                                    transform: !isMobile ? 'translateZ(40px)' : 'none',
+                                    textShadow: !isMobile && rightHover ? '0 15px 30px rgba(0,0,0,0.15)' : 'none',
+                                }}
+                            >
                                 12.5K+ People
                             </h3>
-                            <p className={`${isMobile ? 'text-gray-200' : 'text-gray-800'}`}>
+                            <p
+                                className={`${isMobile ? 'text-gray-200' : 'text-gray-800'}`}
+                                style={{
+                                    transform: !isMobile ? 'translateZ(20px)' : 'none',
+                                }}
+                            >
                                 have used our services such as renting, buying, or even selling their car.
                             </p>
                         </div>
-                        <div className={"flex flex-wrap items-center justify-center gap-3 mt-10"}>
-                            {/* ... Your four buttons ... */}
-                                <NavLink to={"/cars"}>
-                            <button className={`px-6 border-2 border-[#FD3B3B] py-3 text-xl text-[#FD3B3B] rounded-full hover:bg-[#FD3B3B] hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white hover:cursor-pointer  ${!isMobile ? 'bg-white/70' : 'bg-[#F5F5F5]'}`}>
-                                Rent
-                            </button>
-                                    </NavLink>
-                                <NavLink to={"/cars"}>
-                            <button className={`px-7 border-2 border-[#FD3B3B] py-3 text-xl text-[#FD3B3B] rounded-full hover:bg-[#FD3B3B] hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white hover:cursor-pointer ${!isMobile ? 'bg-white/70' : 'bg-[#F5F5F5]'}`}>
+
+                        <div
+                            className="flex flex-wrap items-center justify-center gap-3 mt-10"
+                            style={{
+                                transform: !isMobile ? 'translateZ(35px)' : 'none',
+                            }}
+                        >
+                            <NavLink to={"/cars"}>
+                                <button
+                                    className={`px-6 border-2 border-[#FD3B3B] py-3 text-xl text-[#FD3B3B] rounded-full hover:bg-[#FD3B3B] hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white hover:cursor-pointer ${!isMobile ? 'bg-white/70' : 'bg-[#F5F5F5]'}`}
+                                    style={{
+                                        transform: !isMobile ? 'translateZ(10px)' : 'none',
+                                        boxShadow: !isMobile && rightHover ? '0 10px 25px rgba(253, 59, 59, 0.2)' : 'none'
+                                    }}
+                                >
+                                    Rent
+                                </button>
+                            </NavLink>
+                            <NavLink to={"/cars"}>
+                                <button
+                                    className={`px-7 border-2 border-[#FD3B3B] py-3 text-xl text-[#FD3B3B] rounded-full hover:bg-[#FD3B3B] hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white hover:cursor-pointer ${!isMobile ? 'bg-white/70' : 'bg-[#F5F5F5]'}`}
+                                    style={{
+                                        transform: !isMobile ? 'translateZ(10px)' : 'none',
+                                        boxShadow: !isMobile && rightHover ? '0 10px 25px rgba(253, 59, 59, 0.2)' : 'none'
+                                    }}
+                                >
                                     Buy
                                 </button>
-                                </NavLink>
-                                <NavLink to={"/cars"}>
-                            <button className={`px-8 border-2 border-[#FD3B3B] py-3 text-xl text-[#FD3B3B] rounded-full hover:bg-[#FD3B3B] hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white hover:cursor-pointer ${!isMobile ? 'bg-white/70' : 'bg-[#F5F5F5]'}`}>
+                            </NavLink>
+                            <NavLink to={"/cars"}>
+                                <button
+                                    className={`px-8 border-2 border-[#FD3B3B] py-3 text-xl text-[#FD3B3B] rounded-full hover:bg-[#FD3B3B] hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white hover:cursor-pointer ${!isMobile ? 'bg-white/70' : 'bg-[#F5F5F5]'}`}
+                                    style={{
+                                        transform: !isMobile ? 'translateZ(10px)' : 'none',
+                                        boxShadow: !isMobile && rightHover ? '0 10px 25px rgba(253, 59, 59, 0.2)' : 'none'
+                                    }}
+                                >
                                     Sell
                                 </button>
-                                </NavLink>
-                                <NavLink to={"/contact"}>
-                            <button className={`px-5 border-2 border-[#FD3B3B] py-3 text-xl text-[#FD3B3B] rounded-full hover:bg-[#FD3B3B] hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white hover:cursor-pointer ${!isMobile ? 'bg-white/70' : 'bg-[#F5F5F5]'}`}>
+                            </NavLink>
+                            <NavLink to={"/contact"}>
+                                <button
+                                    className={`px-5 border-2 border-[#FD3B3B] py-3 text-xl text-[#FD3B3B] rounded-full hover:bg-[#FD3B3B] hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white hover:cursor-pointer ${!isMobile ? 'bg-white/70' : 'bg-[#F5F5F5]'}`}
+                                    style={{
+                                        transform: !isMobile ? 'translateZ(10px)' : 'none',
+                                        boxShadow: !isMobile && rightHover ? '0 10px 25px rgba(253, 59, 59, 0.2)' : 'none'
+                                    }}
+                                >
                                     Consult
-                            </button>
-                                </NavLink>
+                                </button>
+                            </NavLink>
                         </div>
-                        <div className={`flex gap-3 text-2xl items-center justify-center mt-10 transition-all duration-300 hover:text-[#FD3B3B] hover:gap-5 hover:cursor-pointer ${isMobile ? 'text-gray-200' : 'text-gray-800'}`}>
+
+                        <div
+                            className={`flex gap-3 text-2xl items-center justify-center mt-10 transition-all duration-300 hover:text-[#FD3B3B] hover:gap-5 hover:cursor-pointer ${isMobile ? 'text-gray-200' : 'text-gray-800'}`}
+                            style={{
+                                transform: !isMobile ? 'translateZ(25px)' : 'none',
+                            }}
+                        >
                             <NavLink to={"/about"}>
                                 Learn more <FaArrowRightLong />
                             </NavLink>

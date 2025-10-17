@@ -366,7 +366,7 @@ const ContactPage = () => {
                                 </div>
                                 <div>
                                     <h3 className="text-2xl font-bold">Visit Our Showroom</h3>
-                                    <p className="text-slate-400">123 Auto Street, New York, NY 10001</p>
+                                    <p className="text-slate-400">HASTNAGRI PESHAWAR CITY</p>
                                 </div>
                             </div>
                         </div>
