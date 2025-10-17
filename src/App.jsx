@@ -17,6 +17,9 @@ import PrivateRoutes from "@/Routes/privateRoutes.jsx";
 import PublicRoutes from "@/Routes/PublicRoutes.jsx";
 import {ToastContainer, Zoom} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { inject } from "@vercel/analytics";
+
+inject();
 
 
 const App = () => {
@@ -77,6 +80,7 @@ const App = () => {
                 theme="colored"
                 transition={Zoom}
             />
+
         </ReactLenis>
     )
 }
